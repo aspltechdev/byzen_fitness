@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@700;800&display=swap');
+
+:root {
+  --b-feat-orange: #f97316; 
+  --b-feat-black: #050505;
+  --b-feat-white: #ffffff;
+  --b-feat-gray: #a1a1a1;
+}
+
+.b-feat-section {
+  background-color: var(--b-feat-black);
+  padding: 0 20px 120px;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--b-feat-white);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.b-feat-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- Cinematic Hero --- */
+.b-feat-hero {
+  margin-bottom: 90px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.b-feat-video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.b-feat-hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.b-feat-video-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.3) 50%, rgba(5,5,5,0.1) 100%);
+  z-index: 1;
+}
+
+.b-feat-hero-content {
+  position: absolute;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2;
+  width: 90%;
+  max-width: 750px;
+}
+
+.b-feat-badge {
+  display: inline-block;
+  background: rgba(249, 115, 22, 0.12);
+  color: var(--b-feat-orange);
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.b-feat-title {
+  font-size: 3.8rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.b-feat-orange { color: var(--b-feat-orange); }
+
+.b-feat-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- Cinematic Grid (No Icons) --- */
+.b-feat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* --- Full-Bleed Image Cards --- */
+.b-feat-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 380px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
+}
+
+.b-feat-card-img-wrapper {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.b-feat-card-img-wrapper img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+/* Dramatic Dark Gradient Overlay */
+.b-feat-card-gradient {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(5,5,5,0.98) 10%, rgba(5,5,5,0.6) 50%, rgba(5,5,5,0.1) 100%);
+}
+
+.b-feat-card:hover .b-feat-card-img-wrapper img {
+  transform: scale(1.08); /* Cinematic zoom on hover */
+}
+.b-feat-card:hover {
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow: 0 25px 50px -10px rgba(249, 115, 22, 0.15);
+  transform: translateY(-8px);
+}
+
+/* Editorial Background Number (01, 02...) */
+.b-feat-number {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  z-index: 1;
+  font-size: 5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.04);
+  letter-spacing: -4px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* Premium Text Content */
+.b-feat-card-content {
+  position: relative;
+  z-index: 2;
+  max-width: 90%;
+}
+
+/* Sleek Orange Accent Line */
+.b-feat-accent-line {
+  width: 30px;
+  height: 3px;
+  background: var(--b-feat-orange);
+  margin-bottom: 16px;
+  border-radius: 10px;
+}
+
+.b-feat-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.b-feat-card-desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.b-feat-card:hover .b-feat-card-desc {
+  color: var(--b-feat-white); /* Text brightens on hover */
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .b-feat-grid { grid-template-columns: repeat(2, 1fr); }
+  .b-feat-title { font-size: 3rem; }
+  .b-feat-video-wrapper { height: 450px; }
+}
+
+@media (max-width: 640px) {
+  .b-feat-grid { grid-template-columns: 1fr; }
+  .b-feat-card { height: 300px; padding: 20px; }
+  .b-feat-title { font-size: 2rem; }
+  .b-feat-video-wrapper { height: 350px; border-radius: 16px; }
+  .b-feat-hero-content { bottom: 20px; }
+  .b-feat-number { font-size: 3.5rem; top: 15px; right: 15px; }
+}

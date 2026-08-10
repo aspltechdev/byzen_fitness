@@ -1,0 +1,274 @@
+/* ============ Bysen About — Premium Cream / Black / Orange Theme ============ */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap');
+
+.about {
+  --a-cream: #f4efe7;
+  --a-ink: #14110d;
+  --a-steel: #6b6259;
+  --a-orange: #ff6a00;
+  --a-orange-light: #ffab5c;
+  --a-gradient: linear-gradient(120deg, #ffb35c 0%, #ff6a00 50%, #d43308 100%);
+  --a-display: "Anton", "Arial Black", "Helvetica Neue", sans-serif;
+  --a-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  position: relative;
+  width: 100%;
+  background: var(--a-cream);
+  color: var(--a-ink);
+  padding: 130px 32px;
+  box-sizing: border-box;
+  font-family: var(--a-body);
+}
+
+.about * {
+  box-sizing: border-box;
+}
+
+.about-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* ============ Text column ============ */
+
+.about-text {
+  max-width: 560px;
+}
+
+.about-eyebrow {
+  font-family: var(--a-body);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: var(--a-orange);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.about-title {
+  font-family: var(--a-display);
+  font-weight: 400;
+  font-size: clamp(40px, 5.4vw, 76px);
+  line-height: 0.92;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  margin: 0 0 32px;
+  color: var(--a-ink);
+}
+
+.about-title-accent {
+  color: var(--a-orange);
+}
+
+.about-para {
+  font-family: var(--a-body);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--a-steel);
+  margin: 0 0 20px;
+  max-width: 490px;
+  letter-spacing: 0.1px;
+}
+
+.about-stats {
+  display: flex;
+  gap: 56px;
+  margin-top: 44px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(20, 17, 13, 0.14);
+}
+
+.about-stat-num {
+  font-family: var(--a-display);
+  font-weight: 400;
+  font-size: 46px;
+  letter-spacing: -0.5px;
+  background: var(--a-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+}
+
+.about-stat-label {
+  font-family: var(--a-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--a-steel);
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+/* ============ Visual column ============ */
+
+.about-visual {
+  position: relative;
+  width: 100%;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dot grid decoration */
+.about-dots {
+  position: absolute;
+  top: -10px;
+  left: 6%;
+  width: 130px;
+  height: 130px;
+  background-image: radial-gradient(rgba(20, 17, 13, 0.28) 1.6px, transparent 1.6px);
+  background-size: 16px 16px;
+  z-index: 1;
+}
+
+/* Big outline wordmark behind everything */
+.about-outline-text {
+  position: absolute;
+  top: 50%;
+  right: 4%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: right center;
+  font-family: var(--a-display);
+  font-size: clamp(70px, 9vw, 130px);
+  letter-spacing: 4px;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(20, 17, 13, 0.1);
+  white-space: nowrap;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Half-circle backdrop */
+.about-blob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: var(--a-gradient);
+  box-shadow: 0 40px 80px rgba(255, 106, 0, 0.28);
+  z-index: 1;
+}
+
+/* Floating cutout-style photo */
+.about-cutout {
+  position: relative;
+  z-index: 2;
+  width: 78%;
+  max-width: 380px;
+  aspect-ratio: 3 / 4;
+  border-radius: 999px 999px 40px 40px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(20, 17, 13, 0.3);
+  filter: drop-shadow(0 20px 30px rgba(20, 17, 13, 0.2));
+}
+
+.about-cutout-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  filter: grayscale(0.15) saturate(1.2) contrast(1.1) brightness(0.9);
+}
+
+.about-tag-card {
+  position: absolute;
+  left: 2%;
+  bottom: 4%;
+  z-index: 3;
+  background: var(--a-ink);
+  color: #fff;
+  padding: 26px 30px;
+  max-width: 230px;
+  box-shadow: 0 24px 50px rgba(20, 17, 13, 0.38);
+  clip-path: polygon(0 0, 100% 0, 100% 82%, 92% 100%, 0 100%);
+}
+
+.about-tag-title {
+  font-family: var(--a-display);
+  font-weight: 400;
+  font-size: 28px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--a-orange-light);
+  line-height: 1;
+}
+
+.about-tag-sub {
+  font-family: var(--a-body);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+/* ============ Responsive ============ */
+
+@media (max-width: 960px) {
+  .about {
+    padding: 90px 24px;
+  }
+
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .about-visual {
+    order: -1;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+
+  .about-text {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 70px 20px;
+  }
+
+  .about-stats {
+    gap: 36px;
+  }
+
+  .about-visual {
+    min-height: 420px;
+  }
+
+  .about-blob {
+    width: 280px;
+    height: 280px;
+  }
+
+  .about-tag-card {
+    left: 0;
+    bottom: 0;
+    padding: 18px 22px;
+    max-width: 180px;
+  }
+
+  .about-tag-title {
+    font-size: 22px;
+  }
+
+  .about-stat-num {
+    font-size: 34px;
+  }
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import "./cta.css";
+import "./Cta.css";
 import { ArrowRight, Phone, MapPin, Clock } from "lucide-react";
 import ctaBg from "../assets/g3.jpg"; // swap this for whichever gym photo you want behind the CTA
 

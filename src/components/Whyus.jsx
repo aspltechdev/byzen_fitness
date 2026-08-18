@@ -3,7 +3,7 @@ import React from 'react';
 import './Whyus.css';
 import s1 from '../assets/l8.jpg';
 import s2 from '../assets/g7.jpg';
-import s3 from '../assets/S3.jpeg';
+import s3 from '../assets/s3.jpeg';
 import s4 from '../assets/g9.jpg';
 import s5 from '../assets/1a.png';
 import s6 from '../assets/k.png';

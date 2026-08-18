@@ -1,7 +1,7 @@
 import Navbar from "./Navbar";
 import Hero from "./Hero";
 import About from "./About";
-import Mission from "./Mission";
+import Mission from "./mission";
 import Features from "./Features";
 import Services from "./Services";
 import Whyus from "./Whyus";
@@ -19,7 +19,7 @@ function Home() {
       <Navbar />
       <Hero />
       <About />
-      <Mission />
+      <mission />
       <Whyus />
       <Services />
      

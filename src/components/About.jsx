@@ -1,19 +1,70 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import "./About.css";
+import aboutImg from "../assets/ab.jpeg";
 
-const aboutImg =
-  "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80";
+// ---- Custom hook ----
+const useCountUp = (target, duration = 2000) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const [hasStarted, setHasStarted] = useState(false);
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  show: (delay = 0) => ({
+  useEffect(() => {
+    if (isInView && !hasStarted) {
+      setHasStarted(true);
+      let startTime = null;
+      const step = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setCount(Math.floor(eased * target));
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        } else {
+          setCount(target);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+  }, [isInView, hasStarted, target, duration]);
+
+  return { count, ref };
+};
+
+// ---- Stagger & rise animations ----
+const staggerContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const riseUp = {
+  hidden: { opacity: 0, y: 60 },
+  show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] },
-  }),
+    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const riseUpVisual = {
+  hidden: { opacity: 0, y: 80 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
 const About = () => {
+  const { count: sqft, ref: sqftRef } = useCountUp(7000);
+  const { count: members, ref: membersRef } = useCountUp(2794);
+
   return (
     <section id="about" className="about">
       <div className="about-container">
@@ -23,40 +74,45 @@ const About = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
-          custom={0}
-          variants={fadeUp}
+          variants={staggerContainer}
         >
-          <div className="about-eyebrow">WHO WE ARE</div>
+          <motion.div className="about-eyebrow" variants={riseUp}>
+            WHO WE ARE
+          </motion.div>
 
-          <h2 className="about-title">
+          <motion.h2 className="about-title" variants={riseUp}>
             PONDICHERRY&apos;S
             <br />
             <span className="about-title-accent">FITNESS GROUND</span>
-          </h2>
+          </motion.h2>
 
-          <p className="about-para">
-            BYSEN Fitness is a 7,000 sq.ft unisex training facility built for
-            people who take their training seriously &mdash; whatever that
-            looks like for them. Cardio decks, a full CrossFit rig, group
-            Zumba floors, and a strength zone, all under one roof.
-          </p>
+          <motion.p className="about-para" variants={riseUp}>
+            BYSEN was founded by Margaret Senoreta, who traded a career built
+            on dual Master&apos;s degrees in Criminal and Maritime Law for a
+            life spent building &mdash; from Josh Jewellery to the eco-friendly
+            Koora Kotta Resort and the Lubber Pandhu Turf Club. Through every
+            venture, one thing stayed constant: a personal commitment to
+            physical vitality.
+          </motion.p>
 
-          <p className="about-para">
-            Our Protein HUB means recovery starts the second your session
-            ends &mdash; no detour required. Nearly 3,000 members strong and
-            growing, on Pondicherry&apos;s biggest gym floor.
-          </p>
+          <motion.p className="about-para" variants={riseUp}>
+            BYSEN &mdash; The Fitness Garage is her latest passion project: a
+            judgment-free space where physical health and mental well-being
+            coexist. This is your safe space &mdash; no judgment, just
+            results. The goal: start now. The mission: make a difference.
+          </motion.p>
 
-          <div className="about-stats">
-            <div className="about-stat">
-              <div className="about-stat-num">7000</div>
+          {/* Stats with animated numbers */}
+          <motion.div className="about-stats" variants={riseUp}>
+            <div className="about-stat" ref={sqftRef}>
+              <div className="about-stat-num">{sqft}</div>
               <div className="about-stat-label">SQ.FT FACILITY</div>
             </div>
-            <div className="about-stat">
-              <div className="about-stat-num">2794+</div>
+            <div className="about-stat" ref={membersRef}>
+              <div className="about-stat-num">{members}+</div>
               <div className="about-stat-label">COMMUNITY MEMBERS</div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Image column */}
@@ -65,8 +121,7 @@ const About = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
-          custom={0.2}
-          variants={fadeUp}
+          variants={riseUpVisual}
         >
           <div className="about-dots" aria-hidden="true" />
           <div className="about-outline-text" aria-hidden="true">TRAIN</div>
@@ -82,7 +137,7 @@ const About = () => {
           </div>
 
           <div className="about-tag-card">
-            <div className="about-tag-title">Unisex</div>
+            <div className="about-tag-title">Bysen</div>
             <div className="about-tag-sub">OPEN TO EVERY MEMBER</div>
           </div>
         </motion.div>

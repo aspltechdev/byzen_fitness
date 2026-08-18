@@ -1,83 +1,164 @@
+// Whyus.jsx
 import React from 'react';
 import './Whyus.css';
+import s1 from '../assets/l8.jpg';
+import s2 from '../assets/g7.jpg';
+import s3 from '../assets/S3.jpeg';
+import s4 from '../assets/g9.jpg';
+import s5 from '../assets/1a.png';
+import s6 from '../assets/k.png';
+import steamImg from '../assets/d2.png';
+import massageImg from '../assets/d1.png';
+import proteinImg from '../assets/v1.png';
+import coldPlungeImg from '../assets/d3.png';
 
 const Whyus = () => {
-  const posterImage = 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80';
+  // All 6 programs from the brochure "SERVICES OFFERED" page
+  const programs = [
+    {
+      id: 1,
+      number: '01',
+      // icon: '🧑‍🏫',
+      title: 'Personal Training',
+      // description: 'One-on-one coaching built around your goals, with form correction and a program that actually fits your life.',
+      image: s1,
+    },
+    {
+      id: 2,
+      number: '02',
+      // icon: '🏋️',
+      title: 'Strength Training',
+      // description: 'Free weights, machines & cables — everything you need to build raw, functional strength.',
+      image: s2,
+    },
+    {
+      id: 3,
+      number: '03',
+      // icon: '🏋️‍♂️',
+      title: 'Cardio Zone',
+      // description: 'Barbells, plates & racks for serious lifters — progressive overload, done right.',
+      image: s3,
+    },
+    {
+      id: 4,
+      number: '04',
+      // icon: '🔥',
+      title: 'CrossFit',
+      // description: 'Full CrossFit rig · squat racks · deadlift platforms · functional fitness at its finest.',
+      image: s4,
+    },
+    {
+      id: 5,
+      number: '05',
+      // icon: '🏃',
+      title: 'Zumba',
+      // description: 'State-of-the-art treadmills, bikes & rowers — high intensity, premium airflow for maximum endurance.',
+      image: s5,
+    },
+    {
+      id: 6,
+      number: '06',
+      // icon: '💃',
+     title: 'Weight Training',
+      // description: 'High-energy group Zumba classes with certified instructors — cardio that never feels like a chore.',
+      image: s6,
+    },
+  ];
+
+  // Additional services from the brochure "ADDITIONAL SERVICES" page
+  const extraServices = [
+    { id: 1, name: 'Steam', price: '₹250', note: '/ 15 min', color: 'b-w-service-orange', image: steamImg },
+    { id: 2, name: 'Massage Chair', price: '₹250', note: '/ 15 min', color: 'b-w-service-purple', image: massageImg },
+    { id: 3, name: 'Protein Hub', price: 'As per menu', note: '', color: 'b-w-service-green', image: proteinImg },
+    { id: 4, name: 'Cold Plunge', price: 'Sat & Sun', note: 'slots only', color: 'b-w-service-blue', image: coldPlungeImg },
+  ];
 
   return (
-    <section id="whyus" className="b-w-section">
-      
-      {/* 1. High-Quality Real Gym Background Video */}
-      <video 
-        autoPlay 
-        muted 
-        loop 
-        playsInline 
-        className="b-w-bg-video" 
-        poster={posterImage} /* Fallback if video fails */
-      >
-        <source src="https://videos.pexels.com/video-files/2882617/2882617-uhd_2560_1440_25fps.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
+    <section id="yus" className="b-w-section">
+      {/* 1. Cinematic background video */}
+      <video className="b-w-bg-video" autoPlay muted loop playsInline>
+        <source
+          src="https://videos.pexels.com/video-files/3194932/3194932-uhd_2732_1440_24fps.mp4"
+          type="video/mp4"
+        />
       </video>
-      
-      {/* 2. Heavily Blended Gradient Overlay for Perfect Text Visibility */}
+
+      {/* 2. WARM ORANGE-BEIGE OVERLAY — NOT BLACK! */}
       <div className="b-w-video-overlay"></div>
 
-      {/* 3. Foreground Content */}
+      {/* 3. Container */}
       <div className="b-w-container">
-        
-        <div className="b-w-content">
-          <span className="b-w-badge">WHY CHOOSE US</span>
-          
-          <h2 className="b-w-title">
-            <span className="b-w-white">THE BYSEN</span>
-            <span className="b-w-orange">STANDARD</span>
-          </h2>
-          
-          <p className="b-w-desc">
-            7,000 sq.ft of elite training, a 100% unisex environment, and a dedicated Protein HUB. Here is why Pondicherry chooses BYSEN.
-          </p>
+        {/* Badge */}
+        <div className="b-w-badge"> OUR PROGRAMS</div>
 
-          {/* --- 4. The 01, 02, 03 Grid --- */}
-          <div className="b-w-grid">
-            {/* Card 01 */}
-            <div className="b-w-card">
-              <span className="b-w-number">01</span>
+        {/* Title */}
+        <div className="b-w-title">
+          <span className="b-w-white">choose your</span>
+          <span className="b-w-orange">workout</span>
+        </div>
+
+        {/* Description */}
+        <p className="b-w-desc">
+          From high-intensity to recovery — find your perfect fit at Pondicherry's biggest gym
+        </p>
+
+        {/* 6-card grid — Services Offered */}
+        <div className="b-w-grid">
+          {programs.map((program) => (
+            <div key={program.id} className="b-w-card">
+              <div className="b-w-number">{program.number}</div>
               <div className="b-w-card-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="Gym Facility" />
+                <img src={program.image} alt={program.title} loading="lazy" />
               </div>
               <div className="b-w-card-content">
-                <h4>7,000 Sq.Ft Facility</h4>
-                <p>Pondicherry's largest training floor with an expansive strength zone, full CrossFit rig, and dedicated cardio arena.</p>
+                <h4><i>{program.icon}</i> {program.title}</h4>
+                <p>{program.description}</p>
+                <span className="b-w-card-accent"></span>
               </div>
             </div>
+          ))}
+        </div>
 
-            {/* Card 02 */}
-            <div className="b-w-card">
-              <span className="b-w-number">02</span>
-              <div className="b-w-card-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Unisex Gym" />
-              </div>
-              <div className="b-w-card-content">
-                <h4>100% Unisex & Inclusive</h4>
-                <p>A completely judgment-free zone where athletes of every gender and fitness level feel welcomed, supported, and empowered.</p>
-              </div>
-            </div>
+        {/* --- Additional Services Section - No Black Card --- */}
+        <div className="b-w-additional-services">
+          <div className="b-w-additional-header">
+            <span className="b-w-badge b-w-additional-badge">EXTRA SERVICES</span>
+            <h3 className="b-w-additional-title">
+              Additional <span className="b-w-orange">Services</span>
+            </h3>
+          </div>
 
-            {/* Card 03 */}
-            <div className="b-w-card">
-              <span className="b-w-number">03</span>
-              <div className="b-w-card-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1594882645126-14020914d5cd?w=600&q=80" alt="Protein Hub" />
-              </div>
-              <div className="b-w-card-content">
-                <h4>24/7 Access & Protein HUB</h4>
-                <p>Work out any time, day or night. Plus, hit our on-site Protein HUB immediately after your session for the ultimate refuel.</p>
+          {/* Extra Services Marquee - wide, short cards with image */}
+          <div className="b-w-services-marquee-wrapper">
+            <div className="b-w-services-marquee">
+              <div className="b-w-services-marquee-track">
+                {[...extraServices, ...extraServices].map((service, index) => (
+                  <div
+                    key={`${service.id}-${index}`}
+                    className={`b-w-service-card ${service.color}`}
+                  >
+                    <div className="b-w-service-card-img">
+                      <img src={service.image} alt={service.name} loading="lazy" />
+                    </div>
+                    <div className="b-w-service-card-text">
+                      <h4 className="b-w-service-name">{service.name}</h4>
+                      <p className="b-w-service-price">
+                        {service.price} {service.note && <span>{service.note}</span>}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
 
+        {/* Footer stats */}
+        {/* <div className="b-w-stats">
+          <span className="b-w-stats-item">7,000 sq.ft</span>
+          <span className="b-w-stats-item b-w-stats-orange">2,794+ members</span>
+          <span className="b-w-stats-item">pondicherry's biggest</span>
+        </div> */}
       </div>
     </section>
   );

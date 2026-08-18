@@ -1,0 +1,274 @@
+.mission-section {
+  position: relative;
+  padding: 60px 8% 70px;
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 400px;
+}
+
+/* Background image is set inline via style={{ backgroundImage }} in the JSX */
+.mission-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #111;
+  z-index: 0;
+}
+
+/* Perfect overlay - makes both BG image AND cards visible */
+.mission-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    /* 1. A HARD DARK BLOCK right where the text sits (so text is perfectly clear) */
+    radial-gradient(
+      ellipse at 50% 25%,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.0) 55%
+    ),
+    /* 2. The vignette (dark edges) for the cards and bottom */
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(0, 0, 0, 0.0) 40%,
+      rgba(0, 0, 0, 0.6) 65%,
+      rgba(0, 0, 0, 0.9) 100%
+    );
+  z-index: 1;
+}
+
+/* Everything visible sits above the image + overlay */
+.mission-content {
+  position: relative;
+  z-index: 2;
+}
+
+.mission-badge {
+  display: inline-block;
+  background: rgba(255, 122, 26, 0.2);
+  color: #ff8c2b;
+  border: 1px solid rgba(255, 140, 43, 0.5);
+  padding: 8px 24px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(8px);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.mission-heading {
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 40px;
+  color: #ffffff;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.mission-heading .highlight {
+  color: #ff7a1a;
+  text-shadow: 0 0 40px rgba(255, 122, 26, 0.4);
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto 40px;
+}
+
+.mission-card {
+  background: rgba(10, 10, 20, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 32px 28px;
+  text-align: left;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+}
+
+.mission-card:hover {
+  border-color: #ff7a1a;
+  transform: translateY(-6px);
+  background: rgba(20, 20, 35, 0.92);
+  box-shadow: 0 12px 60px rgba(255, 122, 26, 0.15);
+}
+
+.mission-card-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff8c2b, #ff5b1a);
+  color: #ffffff;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 20px rgba(255, 122, 26, 0.3);
+}
+
+.mission-card-icon svg {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+.mission-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.mission-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #c8c8d0;
+}
+
+.mission-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.highlight-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(10, 10, 20, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.highlight-chip:hover {
+  border-color: #ff7a1a;
+  background: rgba(20, 20, 35, 0.9);
+  transform: scale(1.05);
+}
+
+.highlight-chip svg {
+  color: #ff7a1a;
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.mission-programs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.program-tag {
+  background: rgba(10, 10, 20, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 122, 26, 0.25);
+  color: #ff8c2b;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.program-tag:hover {
+  background: rgba(255, 122, 26, 0.2);
+  border-color: #ff7a1a;
+  transform: scale(1.05);
+  box-shadow: 0 4px 25px rgba(255, 122, 26, 0.25);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .mission-grid {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .mission-heading {
+    font-size: 30px;
+  }
+
+  .mission-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .mission-section {
+    padding: 50px 6% 50px;
+    min-height: 300px;
+  }
+
+  .mission-card {
+    padding: 22px 20px;
+  }
+
+  .mission-card h3 {
+    font-size: 18px;
+  }
+
+  .mission-card p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mission-section {
+    padding: 40px 5% 40px;
+    min-height: 250px;
+  }
+
+  .mission-heading {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .mission-badge {
+    font-size: 11px;
+    padding: 6px 16px;
+  }
+
+  .mission-card {
+    padding: 18px 16px;
+  }
+
+  .mission-card-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .mission-card-icon svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .highlight-chip {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+
+  .program-tag {
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+}

@@ -1,12 +1,15 @@
 import Navbar from "./Navbar";
 import Hero from "./Hero";
 import About from "./About";
+import Mission from "./Mission";
 import Features from "./Features";
 import Services from "./Services";
 import Whyus from "./Whyus";
 import Gallery from "./Gallery";
 import Testimonials from "./Testimonials";
-// import Cta from "./Cta";
+import Socialwall from "./Socialwall";
+// import Trainerssection from "./Trainerssection";
+import Cta from "./Cta";
 import Contact from "./Contact";
 import Footer from "./Footer";
 
@@ -16,12 +19,18 @@ function Home() {
       <Navbar />
       <Hero />
       <About />
-      <Features />
-      <Services />
+      <Mission />
       <Whyus />
+      <Services />
+     
+      <Features />
       <Gallery />
+
+      <Socialwall />
+      {/* <Trainerssection/> */}
       <Testimonials />
-      {/* <Cta /> */}
+
+      <Cta />
       <Contact />
       <Footer />
     </>

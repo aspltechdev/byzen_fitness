@@ -1,25 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@700;800&display=swap');
 
 :root {
-  /* Updated Color Theme based on your screenshot */
-  --b-c-beige: #f6f2ea; /* Light background */
-  --b-c-card-bg: #ffffff; /* White cards */
-  --b-c-orange: #f97316; /* Signature Orange */
-  --b-c-black: #1a1a1a; /* Bold Dark Text */
-  --b-c-gray: #6b6b6b; /* Sub-text */
+  --b-c-beige: #f6f2ea;
+  --b-c-card-bg: #ffffff;
+  --b-c-orange: #f97316;
+  --b-c-black: #1a1a1a;
+  --b-c-gray: #6b6b6b;
   --b-c-white: #ffffff;
+
+  /* WhatsApp Green */
+  --b-c-whatsapp: #25D366;
 }
 
 /* --- Main Section Wrapper --- */
 .b-c-section {
   position: relative;
-  background-color: var(--b-c-beige); /* Changed from Black to Beige */
+  background-color: var(--b-c-beige);
   padding: 100px 20px 140px;
   display: flex;
   justify-content: center;
   overflow: hidden;
   font-family: 'Inter', sans-serif;
-  color: var(--b-c-black); /* Changed from White to Black */
+  color: var(--b-c-black);
 }
 
 .b-c-container {
@@ -30,13 +32,19 @@
   z-index: 2;
 }
 
-/* --- Subtle Dotted Background (Dark dots on light beige) --- */
+/* --- Subtle Dotted Background --- */
 .b-c-dots {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 1;
-  opacity: 0.12; /* Slightly darker to be visible */
-  background-image: radial-gradient(#b0a69b 1.5px, transparent 1.5px);
+  opacity: 0.12;
+  background-image: radial-gradient(
+    #b0a69b 1.5px,
+    transparent 1.5px
+  );
   background-size: 24px 24px;
   pointer-events: none;
 }
@@ -73,8 +81,13 @@
   line-height: 0.9;
 }
 
-.b-c-white { color: var(--b-c-black); } /* Renamed for compatibility, now dark */
-.b-c-orange { color: var(--b-c-orange); }
+.b-c-white {
+  color: var(--b-c-black);
+}
+
+.b-c-orange {
+  color: var(--b-c-orange);
+}
 
 .b-c-desc {
   font-size: 1.1rem;
@@ -105,20 +118,21 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  background: var(--b-c-card-bg); /* Pure white card */
+  background: var(--b-c-card-bg);
   padding: 24px 28px;
   border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.04); /* Thin dark border */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.02); /* Slight subtle shadow */
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
   transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .b-c-card:hover {
   transform: translateY(-4px);
   border-color: rgba(249, 115, 22, 0.3);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.04);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.04);
 }
 
+/* --- Contact Icons --- */
 .b-c-icon-box {
   flex-shrink: 0;
   width: 48px;
@@ -149,6 +163,7 @@
   color: var(--b-c-white);
 }
 
+/* --- Contact Card Text --- */
 .b-c-card-text h4 {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
@@ -170,11 +185,11 @@
 }
 
 .b-c-form-wrapper {
-  background: var(--b-c-card-bg); /* Pure white */
+  background: var(--b-c-card-bg);
   padding: 40px;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.04);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
   width: 100%;
 }
 
@@ -197,13 +212,13 @@
   flex-direction: column;
 }
 
-/* Styling inputs for Light Theme */
-.b-c-input, 
-.b-c-select, 
+/* --- Form Inputs --- */
+.b-c-input,
+.b-c-select,
 .b-c-textarea {
   width: 100%;
   padding: 16px 18px;
-  background: #f5f1eb; /* Light beige-gray input background */
+  background: #f5f1eb;
   border: 1px solid #e0dbd4;
   border-radius: 12px;
   color: var(--b-c-black);
@@ -211,21 +226,23 @@
   font-size: 1rem;
   transition: all 0.3s ease;
   outline: none;
+  box-sizing: border-box;
 }
 
-.b-c-input::placeholder, 
+.b-c-input::placeholder,
 .b-c-textarea::placeholder {
   color: #a0a0a0;
 }
 
-.b-c-input:focus, 
-.b-c-select:focus, 
+.b-c-input:focus,
+.b-c-select:focus,
 .b-c-textarea:focus {
   border-color: var(--b-c-orange);
   background: #ffffff;
   box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.08);
 }
 
+/* --- Select --- */
 .b-c-select {
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6b6b' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
@@ -244,6 +261,7 @@
   min-height: 100px;
 }
 
+/* --- Submit Button --- */
 .b-c-submit-btn {
   display: flex;
   align-items: center;
@@ -275,46 +293,159 @@
   margin-top: 2px;
 }
 
+/* ================================================= */
 /* --- Floating WhatsApp Button --- */
+/* ================================================= */
+
 .b-c-whatsapp-btn {
   position: fixed;
   bottom: 30px;
   right: 30px;
+
   width: 60px;
   height: 60px;
-  background: var(--b-c-orange);
+
+  /* Original WhatsApp Green */
+  background: #25D366;
+
   border-radius: 50%;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+
+  /* Green glow */
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+
   z-index: 100;
+
   transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+
   text-decoration: none;
+
+  /* Green pulse wave */
   animation: b-c-wa-pulse 2s infinite;
 }
 
+/* WhatsApp Hover */
 .b-c-whatsapp-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 12px 35px rgba(249, 115, 22, 0.6);
+
+  /* Green hover glow */
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.65);
 }
 
+/* ================================================= */
+/* --- GREEN WAVE AROUND WHATSAPP --- */
+/* ================================================= */
+
 @keyframes b-c-wa-pulse {
-  0% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.6); }
-  70% { box-shadow: 0 0 0 15px rgba(249, 115, 22, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); }
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+
+  70% {
+    box-shadow:
+      0 0 0 15px rgba(37, 211, 102, 0);
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(37, 211, 102, 0);
+  }
 }
 
 /* --- Responsive Design --- */
+
 @media (max-width: 1024px) {
-  .b-c-title { font-size: 3.2rem; }
-  .b-c-form-wrapper { padding: 30px; }
+  .b-c-title {
+    font-size: 3.2rem;
+  }
+
+  .b-c-form-wrapper {
+    padding: 30px;
+  }
 }
 
 @media (max-width: 768px) {
-  .b-c-grid { grid-template-columns: 1fr; gap: 30px; }
-  .b-c-title { font-size: 2.5rem; gap: 6px; flex-direction: column; }
-  .b-c-section { padding: 60px 20px 100px; }
-  .b-c-card { padding: 20px; }
-  .b-c-form-wrapper { padding: 24px; }
+  .b-c-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .b-c-title {
+    font-size: 2.5rem;
+    gap: 6px;
+    flex-direction: column;
+  }
+
+  .b-c-section {
+    padding: 60px 20px 100px;
+  }
+
+  .b-c-card {
+    padding: 20px;
+  }
+
+  .b-c-form-wrapper {
+    padding: 24px;
+  }
+
+  .b-c-whatsapp-btn {
+    width: 55px;
+    height: 55px;
+    right: 20px;
+    bottom: 20px;
+  }
+}
+.b-c-info-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.b-c-card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.b-c-card-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.b-c-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 40px;
+}
+
+.b-c-form-col {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.b-c-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .b-c-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 }

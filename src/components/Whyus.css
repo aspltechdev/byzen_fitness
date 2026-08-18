@@ -1,29 +1,50 @@
-/* --- Unique Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@700;800&display=swap');
+/* Whyus.css */
+/* ===== PREMIUM BEIGE + BLACK + ORANGE THEME ===== */
 
-:root {
-  --b-w-black: #050505; 
-  --b-w-orange: #f97316; 
-  --b-w-white: #ffffff;
-  --b-w-gray: #d1d5db; /* Lightened for better contrast */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* --- Main Wrapper --- */
+:root {
+  --why-bg: #f4efe7;
+  --why-bg-light: #faf7f1;
+  --why-black: #171513;
+  --why-dark: #24201c;
+
+  --why-orange: #ff6a00;
+  --why-orange-bright: #ff7414;
+  --why-orange-light: #ff9b52;
+
+  --why-beige: #e8ded0;
+  --why-beige-dark: #cfc3b3;
+  --why-gray: #716b64;
+
+  --why-card: rgba(255, 255, 255, 0.55);
+  --why-border: rgba(23, 21, 19, 0.14);
+  --why-shadow: rgba(23, 21, 19, 0.12);
+}
+
+/* ===== SECTION ===== */
+
 .b-w-section {
   position: relative;
-  background-color: var(--b-w-black);
-  height: 100vh; /* EXACTLY one screen height, prevents exceeding */
-  padding: 20px 20px; /* Reduced padding */
+  background: var(--why-bg);
+  min-height: 100vh;
+  padding: 20px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   font-family: 'Inter', sans-serif;
-  color: var(--b-w-white);
-  box-sizing: border-box;
+  color: var(--why-black);
 }
 
-/* --- 1. Cinematic Video --- */
+/* ===== VIDEO ===== */
+
 .b-w-bg-video {
   position: absolute;
   top: 0;
@@ -32,21 +53,54 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  opacity: 0.12;
 }
 
-/* --- 2. Strong Radial Overlay for Crystal Clear Text --- */
+/* ===== LIGHT BEIGE OVERLAY ===== */
+
 .b-w-video-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Center is 70% black, edges are 95% black. Keeps video visible but text 100% readable */
-  background: radial-gradient(circle at center, rgba(5,5,5,0.6) 0%, rgba(5,5,5,0.95) 100%);
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(244, 239, 231, 0.82) 55%,
+      rgba(244, 239, 231, 0.96) 100%
+    );
   z-index: 1;
 }
 
-/* --- 3. Container --- */
+/* ===== SUBTLE BACKGROUND DETAILS ===== */
+
+.b-w-section::before {
+  content: '';
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  top: -180px;
+  right: -120px;
+  background: rgba(255, 106, 0, 0.07);
+  border-radius: 50%;
+  filter: blur(30px);
+  z-index: 1;
+}
+
+.b-w-section::after {
+  content: '';
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  bottom: -180px;
+  left: -120px;
+  background: rgba(23, 21, 19, 0.035);
+  border-radius: 50%;
+  filter: blur(30px);
+  z-index: 1;
+}
+
+/* ===== CONTAINER ===== */
+
 .b-w-container {
   max-width: 1100px;
   width: 100%;
@@ -56,21 +110,24 @@
   text-align: center;
 }
 
-/* --- 4. Typography with Text Shadow --- */
+/* ===== BADGE ===== */
+
 .b-w-badge {
   display: inline-block;
-  color: var(--b-w-orange);
+  color: var(--why-orange);
   font-weight: 800;
-  font-size: 0.75rem;
-  letter-spacing: 2px;
+  font-size: 0.65rem;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  margin-bottom: 12px;
-  background: rgba(249, 115, 22, 0.1);
-  padding: 8px 20px;
+  margin-bottom: 10px;
+  background: rgba(255, 106, 0, 0.07);
+  padding: 7px 18px;
   border-radius: 50px;
-  border: 1px solid rgba(249, 115, 22, 0.15);
-  text-shadow: 0 2px 8px rgba(0,0,0,0.8); /* Crisp shadow */
+  border: 1px solid rgba(255, 106, 0, 0.22);
+  backdrop-filter: blur(8px);
 }
+
+/* ===== TITLE ===== */
 
 .b-w-title {
   display: flex;
@@ -81,49 +138,112 @@
   font-weight: 800;
   font-size: 4rem;
   text-transform: uppercase;
-  letter-spacing: -1px;
-  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+  margin: 0 0 8px 0;
   line-height: 0.9;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.9); /* Keeps heavy text legible */
+  color: var(--why-black);
+  text-shadow: none;
 }
 
-.b-w-white { color: var(--b-w-white); }
-.b-w-orange { color: var(--b-w-orange); }
+/* ===== TITLE COLORS ===== */
+
+.b-w-white {
+  color: var(--why-black);
+}
+
+.b-w-orange {
+  color: var(--why-orange);
+}
+
+.b-w-beige-text {
+  color: var(--why-dark);
+}
+
+/* ===== DESCRIPTION ===== */
 
 .b-w-desc {
-  font-size: 1.05rem;
-  color: var(--b-w-gray);
+  font-size: 0.95rem;
+  color: var(--why-gray);
   line-height: 1.6;
-  max-width: 650px;
-  margin: 0 auto 30px; /* Reduced bottom margin */
-  text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+  max-width: 600px;
+  margin: 0 auto 14px;
+  letter-spacing: 0.2px;
+  text-shadow: none;
 }
 
-/* --- 5. Compressed Grid Cards (Fits on 1 screen) --- */
+.b-w-desc span {
+  color: var(--why-dark);
+  font-weight: 500;
+}
+
+.b-w-desc-highlight {
+  color: var(--why-orange);
+  font-weight: 600;
+}
+
+/* ===== GRID ===== */
+
 .b-w-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  gap: 18px;
   text-align: left;
+  margin-bottom: 20px;
 }
+
+/* ===== CARD ===== */
 
 .b-w-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--why-card);
+  backdrop-filter: blur(12px);
   padding: 16px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  border: 1px solid var(--why-border);
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition:
+    transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.4s ease,
+    background 0.4s ease;
   display: flex;
   flex-direction: column;
+  box-shadow:
+    0 8px 25px rgba(23, 21, 19, 0.08);
+  min-height: 320px;
 }
 
-.b-w-card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-4px);
-  border-color: rgba(249, 115, 22, 0.3);
+/* ===== PREMIUM CARD BORDER ===== */
+
+.b-w-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 106, 0, 0.5),
+    rgba(23, 21, 19, 0.08)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
+
+/* ===== CARD HOVER ===== */
+
+.b-w-card:hover {
+  background: rgba(255, 255, 255, 0.78);
+  transform: translateY(-6px);
+  border-color: rgba(255, 106, 0, 0.35);
+  box-shadow:
+    0 18px 40px rgba(23, 21, 19, 0.13);
+}
+
+/* ===== NUMBER ===== */
 
 .b-w-number {
   position: absolute;
@@ -131,72 +251,451 @@
   right: 10px;
   font-family: 'Oswald', sans-serif;
   font-weight: 900;
-  font-size: 5rem; /* Reduced font size */
-  color: rgba(255, 255, 255, 0.03);
+  font-size: 4.8rem;
+  color: rgba(23, 21, 19, 0.035);
   pointer-events: none;
   line-height: 1;
   z-index: 0;
+  transition: 0.3s;
 }
+
+.b-w-card:hover .b-w-number {
+  color: rgba(255, 106, 0, 0.08);
+}
+
+/* ===== CARD IMAGE ===== */
 
 .b-w-card-image-wrapper {
   position: relative;
   z-index: 1;
   width: 100%;
-  height: 130px; /* Reduced height to fit screen */
-  border-radius: 12px;
+  height: 200px;
+  border-radius: 14px;
   overflow: hidden;
   margin-bottom: 12px;
+  border: 1px solid rgba(23, 21, 19, 0.08);
 }
 
 .b-w-card-image-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%) contrast(1.1);
-  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  object-position: center top;
+  display: block;
+  transition:
+    transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .b-w-card:hover .b-w-card-image-wrapper img {
-  filter: grayscale(0%) contrast(1);
   transform: scale(1.06);
 }
+
+/* ===== CARD CONTENT ===== */
 
 .b-w-card-content {
   position: relative;
   z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .b-w-card-content h4 {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
-  color: var(--b-w-white);
-  margin: 0 0 6px 0;
+  color: var(--why-black);
+  margin: 0 0 4px 0;
+  letter-spacing: 0.3px;
+}
+
+.b-w-card-content h4 i {
+  color: var(--why-orange);
+  font-style: normal;
+  margin-right: 6px;
 }
 
 .b-w-card-content p {
-  font-size: 0.85rem;
-  color: var(--b-w-gray);
+  font-size: 0.8rem;
+  color: var(--why-gray);
   margin: 0;
   line-height: 1.5;
+  opacity: 1;
 }
 
 .b-w-card:hover .b-w-card-content p {
-  color: var(--b-w-white);
+  color: var(--why-dark);
 }
 
-/* --- Responsive Design --- */
+/* ===== CARD ACCENT ===== */
+
+.b-w-card-accent {
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background: var(--why-orange);
+  margin-top: 6px;
+  border-radius: 4px;
+  opacity: 0.8;
+}
+
+/* ===== ADDITIONAL SERVICES SECTION - NO BLACK CARD ===== */
+
+.b-w-additional-services {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 2px solid rgba(23, 21, 19, 0.08);
+  text-align: center;
+}
+
+.b-w-additional-header {
+  margin-bottom: 20px;
+}
+
+.b-w-additional-badge {
+  margin-bottom: 6px;
+}
+
+.b-w-additional-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 800;
+  font-size: 2.8rem;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  margin: 0;
+  line-height: 1.1;
+  color: var(--why-black);
+}
+
+/* ===== SERVICE CARDS - MARQUEE, WIDE & SHORT, WITH IMAGE ===== */
+
+.b-w-services-marquee-wrapper {
+  margin-top: 14px;
+  overflow: hidden;
+  border-radius: 14px;
+  padding: 4px 0;
+}
+
+.b-w-services-marquee {
+  overflow: hidden;
+  position: relative;
+}
+
+.b-w-services-marquee-track {
+  display: flex;
+  animation: marqueeScrollReverse 22s linear infinite;
+  gap: 14px;
+  width: max-content;
+}
+
+@keyframes marqueeScrollReverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.b-w-services-marquee-wrapper:hover .b-w-services-marquee-track {
+  animation-play-state: paused;
+}
+
+.b-w-service-card {
+  position: relative;
+  flex-shrink: 0;
+  width: 220px;
+  height: 100px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.88));
+  backdrop-filter: blur(14px);
+  padding: 10px 16px 10px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(23, 21, 19, 0.1);
+  box-shadow: 0 6px 20px rgba(23, 21, 19, 0.08);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.b-w-service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 5px;
+  border-radius: 14px 0 0 14px;
+  z-index: 2;
+}
+
+.b-w-service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(23, 21, 19, 0.12);
+  border-color: rgba(255, 106, 0, 0.3);
+}
+
+.b-w-service-card-img {
+  flex-shrink: 0;
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-left: 4px;
+}
+
+.b-w-service-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.b-w-service-card:hover .b-w-service-card-img img {
+  transform: scale(1.08);
+}
+
+.b-w-service-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  flex: 1;
+}
+
+/* Per-card accent side bars */
+.b-w-service-orange::before {
+  background: linear-gradient(180deg, #ff9b52, #ff6a00);
+}
+.b-w-service-purple::before {
+  background: linear-gradient(180deg, #c58bff, #7b3ff2);
+}
+.b-w-service-green::before {
+  background: linear-gradient(180deg, #7fe3a0, #1fa860);
+}
+.b-w-service-blue::before {
+  background: linear-gradient(180deg, #7fd4ff, #1f8fd6);
+}
+
+.b-w-service-name {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--why-black);
+  margin: 0;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.b-w-service-price {
+  font-size: 0.85rem;
+  color: var(--why-orange);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+.b-w-service-price span {
+  color: var(--why-gray);
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+/* ===== STATS ===== */
+
+.b-w-stats {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: var(--why-gray);
+  border-top: 1px solid rgba(23, 21, 19, 0.1);
+  padding-top: 14px;
+  flex-wrap: wrap;
+}
+
+.b-w-stats-item {
+  font-weight: 500;
+}
+
+.b-w-stats-orange {
+  color: var(--why-orange);
+  font-weight: 700;
+}
+
+.b-w-stats-item:first-child {
+  color: var(--why-black);
+  font-weight: 700;
+}
+
+/* ===== RESPONSIVE ===== */
+
 @media (max-width: 1024px) {
-  .b-w-title { font-size: 3rem; }
-  .b-w-card-image-wrapper { height: 110px; }
-  .b-w-number { font-size: 4rem; }
+  .b-w-title {
+    font-size: 3.2rem;
+  }
+
+  .b-w-card-image-wrapper {
+    height: 160px;
+  }
+
+  .b-w-card {
+    min-height: 280px;
+  }
+
+  .b-w-number {
+    font-size: 4rem;
+  }
+
+  .b-w-service-card {
+    width: 200px;
+    height: 85px;
+    padding: 8px 14px 8px 8px;
+    gap: 10px;
+  }
+
+  .b-w-service-card-img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .b-w-service-name {
+    font-size: 0.85rem;
+  }
+
+  .b-w-service-price {
+    font-size: 0.75rem;
+  }
+
+  .b-w-additional-title {
+    font-size: 2.4rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .b-w-section { height: auto; min-height: 100vh; padding: 60px 20px; } /* Allow scroll on small screens */
-  .b-w-title { font-size: 2.5rem; gap: 6px; flex-direction: column; }
-  .b-w-desc { font-size: 1rem; margin-bottom: 20px; }
-  .b-w-number { font-size: 4rem; }
-  .b-w-grid { grid-template-columns: 1fr; gap: 15px; }
-  .b-w-card-image-wrapper { height: 140px; }
+  .b-w-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 30px 16px;
+  }
+
+  .b-w-title {
+    font-size: 2.4rem;
+    gap: 4px;
+    flex-direction: column;
+  }
+
+  .b-w-desc {
+    font-size: 0.85rem;
+  }
+
+  .b-w-number {
+    font-size: 3.5rem;
+  }
+
+  .b-w-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .b-w-card-image-wrapper {
+    height: 200px;
+  }
+
+  .b-w-card {
+    min-height: 300px;
+  }
+
+  .b-w-additional-title {
+    font-size: 2rem;
+  }
+
+  .b-w-service-card {
+    width: 180px;
+    height: 75px;
+    padding: 6px 12px 6px 6px;
+    border-radius: 12px;
+    gap: 10px;
+  }
+
+  .b-w-service-card-img {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+  }
+
+  .b-w-service-name {
+    font-size: 0.8rem;
+  }
+
+  .b-w-service-price {
+    font-size: 0.7rem;
+  }
+
+  .b-w-service-price span {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .b-w-title {
+    font-size: 2rem;
+  }
+
+  .b-w-card-image-wrapper {
+    height: 180px;
+  }
+
+  .b-w-card {
+    min-height: 270px;
+  }
+
+  .b-w-additional-title {
+    font-size: 1.6rem;
+  }
+
+  .b-w-service-card {
+    width: 160px;
+    height: 65px;
+    padding: 5px 10px 5px 5px;
+    gap: 8px;
+    border-radius: 10px;
+  }
+
+  .b-w-service-card-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+  }
+
+  .b-w-service-name {
+    font-size: 0.7rem;
+  }
+
+  .b-w-service-price {
+    font-size: 0.6rem;
+  }
+
+  .b-w-service-price span {
+    font-size: 0.55rem;
+  }
+
+  .b-w-services-marquee-track {
+    gap: 10px;
+  }
+
+  .b-w-additional-services {
+    margin-top: 20px;
+    padding-top: 20px;
+  }
 }

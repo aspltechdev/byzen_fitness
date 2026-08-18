@@ -272,3 +272,74 @@
     font-size: 34px;
   }
 }
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 560px;
+}
+
+.about-para {
+  text-align: left;
+  max-width: 490px;
+}
+
+.about-stats {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 56px;
+}
+
+.about-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.about-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Keep everything centered when it stacks on smaller screens */
+@media (max-width: 960px) {
+  .about-container {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .about-text {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .about-para {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .about-stats {
+    justify-content: center;
+  }
+
+  .about-stat {
+    align-items: center;
+    text-align: center;
+  }
+}

@@ -16,9 +16,14 @@ const navLinks = [
     href: "#about",
     description: "Our story & mission"
   },
+   { 
+    name: "Mission", 
+    href: "#mission",
+    description: "Our story & mission"
+  },
   { 
     name: "Programs", 
-    href: "#programs",
+    href: "#yus",
     description: "Cardio, Zumba, CrossFit"
   },
   { 

@@ -1,0 +1,574 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap");
+
+/* ============================================
+   Main Section
+   ============================================ */
+.sw-section {
+  position: relative;
+  padding: 120px 0 80px;
+  background-color: #f4efe6;
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+}
+
+.sw-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 40%, rgba(255, 122, 26, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 20%, rgba(255, 122, 26, 0.08) 0%, transparent 50%),
+    linear-gradient(rgba(244, 239, 230, 0.4), rgba(244, 239, 230, 0.4));
+  pointer-events: none;
+  z-index: 0;
+}
+.sw-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#e2dccd 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sw-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================
+   Ambient Glows
+   ============================================ */
+.sw-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: swGlowPulse 6s ease-in-out infinite;
+}
+
+@keyframes swGlowPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 0.85;   transform: scale(1.12); }
+}
+
+.sw-glow-left {
+  top: -60px;
+  left: -80px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(255, 122, 26, 0.22), transparent 60%);
+}
+
+.sw-glow-right {
+  bottom: -60px;
+  right: -80px;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(255, 140, 43, 0.16), transparent 60%);
+  animation-delay: -3s;
+}
+
+.sw-glow-center {
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 122, 26, 0.12), transparent 65%);
+  animation-delay: -1.5s;
+}
+
+/* ============================================
+   Floating Weight Plates (signature motif)
+   ============================================ */
+.sw-notes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.sw-note {
+  position: absolute;
+  bottom: -60px;
+  color: #ff7a1a;
+  opacity: 0;
+  animation: swNoteFloat linear infinite;
+  user-select: none;
+  text-shadow: 0 0 10px rgba(255, 122, 26, 0.35);
+}
+
+@keyframes swNoteFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-45vh) rotate(180deg);
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-95vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   Container
+   ============================================ */
+.sw-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* ============================================
+   Header
+   ============================================ */
+.sw-header {
+  position: relative;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  z-index: 5;
+}
+
+.sw-header-music-bg {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 850px;
+  height: auto;
+  aspect-ratio: 800 / 250;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+  animation: swHeaderMusicFloat 5s ease-in-out infinite;
+}
+
+.sw-header-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@keyframes swHeaderMusicFloat {
+  0%, 100% { transform: translate(-50%, -50%) scaleY(1); }
+  50%       { transform: translate(-50%, -50%) scaleY(1.04); }
+}
+
+.sw-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 122, 26, 0.1);
+  border: 1px solid rgba(255, 122, 26, 0.3);
+  padding: 6px 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.sw-badge-dot {
+  width: 5px;
+  height: 5px;
+  background: #ff7a1a;
+  border-radius: 50%;
+  animation: swBadgePulse 1.2s ease-in-out infinite;
+}
+
+@keyframes swBadgePulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.4); }
+}
+
+.sw-badge-text {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: #ff7a1a;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   Title
+   ============================================ */
+.sw-title {
+  font-family: "Anton", sans-serif;
+  font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+  font-weight: 400;
+  margin: 0 0 0.4rem;
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sw-title-light {
+  color: #14120f;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.sw-title-gold {
+  background: linear-gradient(135deg, #ff7a1a, #ffb347);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Decorative divider */
+.sw-title-decor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0.7rem 0 0.9rem;
+}
+
+.sw-decor-line {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff7a1a, transparent);
+}
+
+.sw-decor-diamond {
+  color: #ff7a1a;
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.sw-subtitle {
+  color: #5c574d;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 1.4rem;
+  font-weight: 400;
+}
+
+/* ============================================
+   Tabs — minimal selector style
+   ============================================ */
+.sw-tabs {
+  display: inline-flex;
+  background: #ffffff;
+  border: 1px solid rgba(255, 122, 26, 0.35);
+  backdrop-filter: blur(12px);
+  padding: 6px;
+  border-radius: 8px;
+  gap: 6px;
+  box-shadow:
+    0 10px 30px rgba(20, 18, 15, 0.08),
+    0 0 20px rgba(255, 122, 26, 0.08);
+}
+
+.sw-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  color: #7a7568;
+  font-family: "Oswald", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.sw-tab-btn:hover {
+  color: #14120f;
+  background: rgba(255, 122, 26, 0.06);
+}
+
+.sw-tab-btn svg {
+  transition: transform 0.3s ease;
+  opacity: 0.85;
+}
+
+.sw-tab-btn:hover svg {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.sw-tab-btn.sw-tab-active {
+  background: linear-gradient(135deg, #ff8c2b, #ff5b1a);
+  color: #ffffff;
+  box-shadow:
+    0 4px 15px rgba(255, 122, 26, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.sw-tab-btn.sw-tab-active svg {
+  opacity: 1;
+}
+
+/* ============================================
+   Marquee
+   ============================================ */
+.sw-marquee {
+  margin-top: 40px;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  height: 735px;
+}
+
+.sw-marquee::before,
+.sw-marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.sw-marquee::before {
+  left: 0;
+  background: linear-gradient(to right, #f4efe6, transparent);
+}
+
+.sw-marquee::after {
+  right: 0;
+  background: linear-gradient(to left, #f4efe6, transparent);
+}
+
+/* ============================================
+   Track
+   ============================================ */
+.sw-track {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: max-content;
+  padding: 0 24px 24px;
+  height: 100%;
+  box-sizing: border-box;
+  animation: swScroll 40s linear infinite;
+}
+
+.sw-marquee:hover .sw-track {
+  animation-play-state: paused;
+}
+
+@keyframes swScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ============================================
+   Cards
+   ============================================ */
+.sw-card {
+  width: 360px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #ece6d9;
+  box-shadow:
+    0 10px 30px rgba(20, 18, 15, 0.08),
+    0 0 0 1px rgba(255, 122, 26, 0.03);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.sw-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(255, 122, 26, 0.5);
+  box-shadow:
+    0 30px 60px rgba(20, 18, 15, 0.12),
+    0 0 0 1px rgba(255, 122, 26, 0.25),
+    0 0 40px rgba(255, 122, 26, 0.12);
+}
+
+.sw-card--wide {
+  width: 480px;
+}
+
+/* Card Top Bar */
+.sw-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  font-family: "Oswald", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #ece6d9;
+}
+
+.sw-card-top--instagram { color: #d9530a; background: rgba(255, 122, 26, 0.06); }
+.sw-card-top--linkedin  { color: #d9530a; background: rgba(255, 122, 26, 0.06); }
+.sw-card-top--youtube   { color: #d9530a; background: rgba(255, 122, 26, 0.06); }
+.sw-card-top--facebook  { color: #d9530a; background: rgba(255, 122, 26, 0.06); }
+
+/* Embed Wrappers */
+.sw-embed-wrapper {
+  width: 100%;
+}
+
+.sw-embed-linkedin {
+  min-height: 668px;
+  background: #f4efe6;
+}
+
+.sw-embed-youtube {
+  min-height: 270px;
+  background: #f4efe6;
+}
+
+.sw-embed-facebook {
+  min-height: 500px;
+  background: #f4efe6;
+}
+
+.sw-youtube-frame {
+  width: 100%;
+  height: 270px;
+  border: none;
+  display: block;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.sw-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 60px;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.sw-footer-line {
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 122, 26, 0.5), transparent);
+}
+
+.sw-follow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #ff8c2b, #ff5b1a);
+  color: #fff;
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 6px 20px rgba(255, 122, 26, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.sw-follow-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255, 122, 26, 0.45);
+  gap: 14px;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 768px) {
+  .sw-section {
+    padding: 80px 0 60px;
+  }
+
+  .sw-card {
+    width: 300px;
+  }
+
+  .sw-card--wide {
+    width: 300px;
+  }
+
+  .sw-embed-youtube,
+  .sw-youtube-frame {
+    height: 180px;
+    min-height: 180px;
+  }
+
+  .sw-embed-facebook {
+    min-height: 350px;
+  }
+
+  .sw-marquee::before,
+  .sw-marquee::after {
+    width: 50px;
+  }
+
+  .sw-track {
+    gap: 16px;
+  }
+
+  /* Icon-only tabs on mobile */
+  .sw-tab-text {
+    display: none;
+  }
+
+  .sw-tabs {
+    padding: 6px;
+    gap: 6px;
+  }
+
+  .sw-tab-btn {
+    padding: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .sw-footer-line {
+    max-width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sw-title {
+    font-size: 2.3rem;
+  }
+
+  .sw-card,
+  .sw-card--wide {
+    width: 270px;
+  }
+}

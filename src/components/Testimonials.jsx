@@ -1,56 +1,70 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./Testimonial.css";
+
+// Import avatar images
+import avatar1 from "../assets/a0.png";
+import avatar2 from "../assets/a2.png";
+import avatar3 from "../assets/a3.png";
+import avatar4 from "../assets/a4.png";
+import avatar5 from "../assets/a5.png";
 
 const testimonials = [
   {
-    id: "w1",
-    name: "William Smith",
-    role: "Homemaker",
-    quote:
-      "Every session at Bysen pushes me further than I thought possible — the coaching here is next level.",
-    avatar:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&h=200&q=80",
-  },
-  {
-    id: "s1",
-    name: "Sarah Brown",
-    role: "Teacher",
-    quote:
-      "The trainers at Bysen make fitness enjoyable and easy to follow — I can't recommend this place enough!",
-    avatar:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&h=200&q=80",
-  },
-  {
-    id: "j1",
-    name: "Jake Donovan",
-    role: "Homemaker",
-    quote:
-      "Working with the Bysen coaches has been amazing. Their guidance inspires real progress and real results.",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&h=200&q=80",
-  },
-  {
     id: "p1",
-    name: "Priya Nair",
-    role: "College Student",
+    name: "Jaya Guna",
+    // role: "Member • 2 reviews",
     quote:
-      "Bysen turned my inconsistent workouts into an actual routine I look forward to every week.",
-    avatar:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&h=200&q=80",
+      "Very good gym... I totally loved it. All the trainer are very friendly and kind. Satisfied service and positive approach by trainers. Mr.Sathiyaraj is also good person as well as trainer part also. Very neat and clean its place very beautiful ❤️",
+    // rating: 5,
+    avatar: avatar1,
+    date: "6 months ago"
   },
   {
-    id: "m1",
-    name: "Marcus Lee",
-    role: "College Student",
+    id: "p2",
+    name: "HappY _ KïñG",
+    // role: "Member • 2 reviews",
     quote:
-      "The energy on the floor at Bysen keeps me accountable — best decision I made this year.",
-    avatar:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&h=200&q=80",
+      "Good clean and fresh Atmosphere with Modern equipments... Kind and Friendly trainers... One of the best gym at Pondicherry ✨",
+    // rating: 5,
+    avatar: avatar2,
+    date: "5 months ago"
+  },
+  {
+    id: "p3",
+    name: "Prabakar Yadava",
+    // role: "Member • 4 reviews",
+    quote:
+      "Very good gym... I totally loved it. All the trainer are very friendly and kind. Satisfied service and positive approach by trainers. Mr.Sathiyaraj is also good person as well as trainer part also. Very neat and clean its place very beautiful ❤️",
+    // rating: 5,
+    avatar: avatar3,
+    date: "5 months ago"
+  },
+  {
+    id: "p4",
+    name: "SATHIARAJ R",
+    // role: "Member • 4 reviews",
+    quote:
+      "BYSEN Fitness is easily one of the best gyms in town! The equipment is top-notch and the atmosphere is very motivating. What stands out the most is their perfect training team—they have highly professional male and female trainers who...",
+    // rating: 5,
+    avatar: avatar4,
+    date: "6 months ago"
+  },
+  {
+    id: "p5",
+    name: "jaimurthy jaishankar",
+    // role: "Member • 4 reviews",
+    quote:
+      "I am not a person who likes to go to gym... But I am love with this place since I joined... Every second spent here is worth time and money... Really nice gym... Latest equipments makes it a go to place...",
+    // rating: 5,
+    avatar: avatar5,
+    date: "1 week ago"
   },
 ];
 
 export default function TestimonialCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(1); // start on Sarah Brown, centered
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
   const total = testimonials.length;
 
@@ -62,8 +76,104 @@ export default function TestimonialCarousel() {
   const goPrev = () => goTo(currentIndex - 1);
   const goNext = () => goTo(currentIndex + 1);
 
+  // Auto-slide
+  useEffect(() => {
+    const interval = setInterval(() => {
+      goNext();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const renderStars = (rating) => {
+    return "★".repeat(rating) + "☆".repeat(5 - rating);
+  };
+
   return (
-    <section className="b-tc-section">
+    <section
+      ref={sectionRef}
+      className={`b-tc-section ${isVisible ? "is-visible" : ""}`}
+    >
+      <style>
+        {`
+          .b-tc-section {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+          }
+
+          .b-tc-section.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+          }
+
+          .b-tc-section .b-tc-header,
+          .b-tc-section .b-tc-stage,
+          .b-tc-section .b-tc-controls {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+          }
+
+          .b-tc-section.is-visible .b-tc-header {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.1s;
+          }
+
+          .b-tc-section.is-visible .b-tc-stage {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.3s;
+          }
+
+          .b-tc-section.is-visible .b-tc-controls {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.5s;
+          }
+
+          @keyframes bounceIn {
+            0% {
+              transform: translate(-50%, -50%) translateX(0) scale(0.6) rotate(-6deg);
+              opacity: 0.2;
+            }
+            60% {
+              transform: translate(-50%, -50%) translateX(0) scale(1.08) rotate(2deg);
+              opacity: 1;
+            }
+            80% {
+              transform: translate(-50%, -50%) translateX(0) scale(0.96) rotate(-1deg);
+            }
+            100% {
+              transform: translate(-50%, -50%) translateX(0) scale(1) rotate(0deg);
+              opacity: 1;
+            }
+          }
+
+          .b-tc-card.is-active {
+            animation: bounceIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+          }
+        `}
+      </style>
+
       <div className="b-tc-glow" />
 
       <div className="b-tc-container">
@@ -76,16 +186,19 @@ export default function TestimonialCarousel() {
             Real results from real people training on our floor — no
             shortcuts, just consistent work and the right support.
           </p>
+          <div className="b-tc-rating-summary">
+            <span className="b-tc-rating-number">4.8</span>
+            <span className="b-tc-rating-stars">★★★★★</span>
+            <span className="b-tc-rating-count">45 reviews</span>
+          </div>
         </div>
 
         <div className="b-tc-stage">
           {testimonials.map((t, idx) => {
-            // shortest signed distance from the active card, accounting for wraparound
             let offset = idx - currentIndex;
             if (offset > total / 2) offset -= total;
             if (offset < -total / 2) offset += total;
 
-            // only render the active card and its immediate neighbours
             if (Math.abs(offset) > 1) return null;
 
             const isActive = offset === 0;
@@ -96,7 +209,7 @@ export default function TestimonialCarousel() {
 
             return (
               <div
-                key={t.id}
+                key={isActive ? `active-${currentIndex}` : t.id}
                 className={`b-tc-card ${isActive ? "is-active" : ""}`}
                 style={{
                   transform: `translate(-50%, -50%) translateX(${translateX}px) scale(${scale})`,
@@ -112,7 +225,9 @@ export default function TestimonialCarousel() {
                     </div>
                     <h3 className="b-tc-name-active">{t.name}</h3>
                     <p className="b-tc-role-active">{t.role}</p>
-                    <p className="b-tc-quote-active">{t.quote}</p>
+                    <div className="b-tc-stars">{renderStars(t.rating)}</div>
+                    <p className="b-tc-quote-active">"{t.quote}"</p>
+                    <span className="b-tc-date">{t.date}</span>
                   </>
                 ) : (
                   <>
@@ -123,9 +238,11 @@ export default function TestimonialCarousel() {
                       <div>
                         <p className="b-tc-name-side">{t.name}</p>
                         <p className="b-tc-role-side">{t.role}</p>
+                        <div className="b-tc-stars-small">{renderStars(t.rating)}</div>
                       </div>
                     </div>
-                    <p className="b-tc-quote-side">{t.quote}</p>
+                    <p className="b-tc-quote-side">"{t.quote}"</p>
+                    <span className="b-tc-date-side">{t.date}</span>
                   </>
                 )}
               </div>

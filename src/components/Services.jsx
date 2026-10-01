@@ -33,7 +33,7 @@ const gridContainer = {
   },
 };
 
-// Each card rises and fades in; the popular card pops in slightly bigger
+// Each card rises and fades in
 const cardRiseUp = {
   hidden: { opacity: 0, y: 60, scale: 0.94 },
   show: {
@@ -44,7 +44,7 @@ const cardRiseUp = {
   },
 };
 
-// Feature list items: staggered fade-in, triggered by the card's own state
+// Feature list items
 const featureList = {
   hidden: {},
   show: {
@@ -64,6 +64,10 @@ const featureItem = {
   },
 };
 
+// Reusable opening-hours text
+const OPENING_HOURS =
+  'Open:\nMon-Sat | 5:30AM - 10:30PM\nSun | 6AM - 12PM';
+
 const Services = () => {
   // Individual Membership Plans
   const individualPlans = [
@@ -75,11 +79,11 @@ const Services = () => {
         'Full Gym Access',
         'Cardio & Strength Zone',
         'Imported Equipment',
-        'Open 5AM – 12AM',
+        OPENING_HOURS,
         '365 Days Access',
       ],
       cta: 'Join Now',
-      popular: false
+      popular: false,
     },
     {
       duration: '3 Months',
@@ -89,12 +93,12 @@ const Services = () => {
         'Full Gym Access',
         'Cardio & Strength Zone',
         'Imported Equipment',
-        'Open 5AM – 12AM',
+        OPENING_HOURS,
         '365 Days Access',
-        'Best Value'
+        'Best Value',
       ],
       cta: 'Join Now',
-      popular: true
+      popular: true,
     },
     {
       duration: '6 Months',
@@ -104,11 +108,11 @@ const Services = () => {
         'Full Gym Access',
         'Cardio & Strength Zone',
         'Imported Equipment',
-        'Open 5AM – 12AM',
+        OPENING_HOURS,
         '365 Days Access',
       ],
       cta: 'Join Now',
-      popular: false
+      popular: false,
     },
     {
       duration: '1 Year',
@@ -118,13 +122,13 @@ const Services = () => {
         'Full Gym Access',
         'Cardio & Strength Zone',
         'Imported Equipment',
-        'Open 5AM – 12AM',
+        OPENING_HOURS,
         '365 Days Access',
-        'Best Long-Term Value'
+        'Best Long-Term Value',
       ],
       cta: 'Join Now',
-      popular: false
-    }
+      popular: false,
+    },
   ];
 
   // Couples/Friends Package
@@ -137,11 +141,11 @@ const Services = () => {
         'Full Gym Access',
         'Cardio & Strength Zone',
         'Imported Equipment',
-        'Open 5AM – 12AM',
+        OPENING_HOURS,
         '365 Days Access',
       ],
       cta: 'Join Now',
-      popular: false
+      popular: false,
     },
     {
       duration: '3 Months',
@@ -151,12 +155,12 @@ const Services = () => {
         'Full Gym Access',
         'Cardio & Strength Zone',
         'Imported Equipment',
-        'Open 5AM – 12AM',
+        OPENING_HOURS,
         '365 Days Access',
-        'Best Value'
+        'Best Value',
       ],
       cta: 'Join Now',
-      popular: true
+      popular: true,
     },
     {
       duration: '6 Months',
@@ -166,11 +170,11 @@ const Services = () => {
         'Full Gym Access',
         'Cardio & Strength Zone',
         'Imported Equipment',
-        'Open 5AM – 12AM',
+        OPENING_HOURS,
         '365 Days Access',
       ],
       cta: 'Join Now',
-      popular: false
+      popular: false,
     },
     {
       duration: '1 Year',
@@ -180,13 +184,13 @@ const Services = () => {
         'Full Gym Access',
         'Cardio & Strength Zone',
         'Imported Equipment',
-        'Open 5AM – 12AM',
+        OPENING_HOURS,
         '365 Days Access',
-        'Best Long-Term Value'
+        'Best Long-Term Value',
       ],
       cta: 'Join Now',
-      popular: false
-    }
+      popular: false,
+    },
   ];
 
   // Personal Training Fees
@@ -203,7 +207,7 @@ const Services = () => {
         'Flexible Scheduling',
       ],
       cta: 'Get Started',
-      popular: false
+      popular: false,
     },
     {
       title: 'Elite',
@@ -215,10 +219,10 @@ const Services = () => {
         'Form Correction',
         'Progress Tracking',
         'Flexible Scheduling',
-        'Nutrition Guidance'
+        'Nutrition Guidance',
       ],
       cta: 'Get Started',
-      popular: true
+      popular: true,
     },
     {
       title: 'Royal',
@@ -231,12 +235,106 @@ const Services = () => {
         'Progress Tracking',
         'Flexible Scheduling',
         'Nutrition Guidance',
-        'Advanced Techniques'
+        'Advanced Techniques',
       ],
       cta: 'Get Started',
-      popular: false
-    }
+      popular: false,
+    },
   ];
+
+  // Reusable check icon
+  const CheckIcon = () => (
+    <svg
+      className="b-s-check-icon"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="3"
+        d="M5 13l4 4L19 7"
+      />
+    </svg>
+  );
+
+  // Reusable feature list
+  const FeatureList = ({ features }) => (
+    <motion.ul
+      className="b-s-features-list"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.5 }}
+      variants={featureList}
+    >
+      {features.map((feature, idx) => (
+        <motion.li
+          key={idx}
+          className="b-s-feature-item"
+          variants={featureItem}
+        >
+          <CheckIcon />
+
+          <span className="b-s-feature-text">
+            {feature}
+          </span>
+        </motion.li>
+      ))}
+    </motion.ul>
+  );
+
+  // Reusable Membership Card
+  const MembershipCard = ({ plan }) => (
+    <motion.div
+      className={`b-s-price-card ${
+        plan.popular ? 'b-s-card-popular' : ''
+      }`}
+      variants={cardRiseUp}
+      whileHover={{
+        y: -10,
+        transition: { duration: 0.3, ease: 'easeOut' },
+      }}
+    >
+      {plan.popular && (
+        <motion.div
+          className="b-s-badge-popular"
+          initial={{ opacity: 0, scale: 0.6 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.5,
+            delay: 0.4,
+            type: 'spring',
+            stiffness: 260,
+            damping: 18,
+          }}
+        >
+          Best Value
+        </motion.div>
+      )}
+
+      <h3 className="b-s-plan-title">{plan.duration}</h3>
+
+      {plan.showPrice && (
+        <div className="b-s-price-wrapper">
+          <span className="b-s-price">{plan.price}</span>
+        </div>
+      )}
+
+      <FeatureList features={plan.features} />
+
+      <motion.a
+        href="#contact"
+        className="b-s-join-btn"
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
+      >
+        {plan.cta}
+        <span className="b-s-join-arrow">➜</span>
+      </motion.a>
+    </motion.div>
+  );
 
   return (
     <section id="membership" className="b-s-section">
@@ -244,10 +342,10 @@ const Services = () => {
       <div className="b-s-bg-wrapper">
         <div className="b-s-bg-overlay"></div>
       </div>
-      
+
       <div className="b-s-container">
-        
-        {/* --- Section Header --- */}
+
+        {/* Section Header */}
         <motion.div
           className="b-s-header"
           initial="hidden"
@@ -255,18 +353,33 @@ const Services = () => {
           viewport={{ once: true, amount: 0.4 }}
           variants={headerContainer}
         >
-          <motion.span className="b-s-badge" variants={headerItem}>
+          <motion.span
+            className="b-s-badge"
+            variants={headerItem}
+          >
             MEMBERSHIP PLANS
           </motion.span>
-          <motion.h2 className="b-s-title" variants={headerItem}>
-            Choose Your <span className="b-s-orange">Journey</span>
+
+          <motion.h2
+            className="b-s-title"
+            variants={headerItem}
+          >
+            Choose Your{' '}
+            <span className="b-s-orange">Journey</span>
           </motion.h2>
-          <motion.p className="b-s-desc" variants={headerItem}>
-            Flexible plans designed to fit your lifestyle. Imported equipment, open 5AM–12AM, 365 days a year — join the BYSEN community and unlock your true potential today.
+
+          <motion.p
+            className="b-s-desc"
+            variants={headerItem}
+          >
+            Flexible plans designed to fit your lifestyle.
+            Imported equipment, open Mon - Sat 5:30 AM - 10:30 PM
+            and Sun 6 AM - 12 PM, 365 days a year — join the BYSEN
+            community and unlock your true potential today.
           </motion.p>
         </motion.div>
 
-        {/* --- Individual Membership --- */}
+        {/* Individual Membership */}
         <motion.div
           className="b-s-plan-category"
           initial="hidden"
@@ -274,8 +387,12 @@ const Services = () => {
           viewport={{ once: true, amount: 0.15 }}
           variants={headerContainer}
         >
-          <motion.h3 className="b-s-category-title" variants={headerItem}>
-            Individual <span className="b-s-orange">Membership</span>
+          <motion.h3
+            className="b-s-category-title"
+            variants={headerItem}
+          >
+            Individual{' '}
+            <span className="b-s-orange">Membership</span>
           </motion.h3>
         </motion.div>
 
@@ -287,67 +404,14 @@ const Services = () => {
           variants={gridContainer}
         >
           {individualPlans.map((plan, index) => (
-            <motion.div
-              className={`b-s-price-card ${plan.popular ? 'b-s-card-popular' : ''}`}
+            <MembershipCard
               key={index}
-              variants={cardRiseUp}
-              whileHover={{
-                y: -10,
-                transition: { duration: 0.3, ease: 'easeOut' },
-              }}
-            >
-              {/* Popular Badge */}
-              {plan.popular && (
-                <motion.div
-                  className="b-s-badge-popular"
-                  initial={{ opacity: 0, scale: 0.6 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.4, type: 'spring', stiffness: 260, damping: 18 }}
-                >
-                  Best Value
-                </motion.div>
-              )}
-
-              <h3 className="b-s-plan-title">{plan.duration}</h3>
-
-              {plan.showPrice && (
-                <div className="b-s-price-wrapper">
-                  <span className="b-s-price">{plan.price}</span>
-                </div>
-              )}
-
-              <motion.ul
-                className="b-s-features-list"
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.5 }}
-                variants={featureList}
-              >
-                {plan.features.map((feature, idx) => (
-                  <motion.li key={idx} className="b-s-feature-item" variants={featureItem}>
-                    <svg className="b-s-check-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
-                    </svg>
-                    {feature}
-                  </motion.li>
-                ))}
-              </motion.ul>
-
-              <motion.a
-                href="#contact"
-                className="b-s-join-btn"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                {plan.cta}
-                <span className="b-s-join-arrow">➜</span>
-              </motion.a>
-            </motion.div>
+              plan={plan}
+            />
           ))}
         </motion.div>
 
-        {/* --- Couples/Friends Package --- */}
+        {/* Couples/Friends Package */}
         <motion.div
           className="b-s-plan-category"
           initial="hidden"
@@ -355,8 +419,12 @@ const Services = () => {
           viewport={{ once: true, amount: 0.15 }}
           variants={headerContainer}
         >
-          <motion.h3 className="b-s-category-title" variants={headerItem}>
-            Couples / Friends <span className="b-s-orange">Package</span>
+          <motion.h3
+            className="b-s-category-title"
+            variants={headerItem}
+          >
+            Couples / Friends{' '}
+            <span className="b-s-orange">Package</span>
           </motion.h3>
         </motion.div>
 
@@ -368,67 +436,14 @@ const Services = () => {
           variants={gridContainer}
         >
           {couplesPlans.map((plan, index) => (
-            <motion.div
-              className={`b-s-price-card ${plan.popular ? 'b-s-card-popular' : ''}`}
+            <MembershipCard
               key={index}
-              variants={cardRiseUp}
-              whileHover={{
-                y: -10,
-                transition: { duration: 0.3, ease: 'easeOut' },
-              }}
-            >
-              {/* Popular Badge */}
-              {plan.popular && (
-                <motion.div
-                  className="b-s-badge-popular"
-                  initial={{ opacity: 0, scale: 0.6 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.4, type: 'spring', stiffness: 260, damping: 18 }}
-                >
-                  Best Value
-                </motion.div>
-              )}
-
-              <h3 className="b-s-plan-title">{plan.duration}</h3>
-
-              {plan.showPrice && (
-                <div className="b-s-price-wrapper">
-                  <span className="b-s-price">{plan.price}</span>
-                </div>
-              )}
-
-              <motion.ul
-                className="b-s-features-list"
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.5 }}
-                variants={featureList}
-              >
-                {plan.features.map((feature, idx) => (
-                  <motion.li key={idx} className="b-s-feature-item" variants={featureItem}>
-                    <svg className="b-s-check-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
-                    </svg>
-                    {feature}
-                  </motion.li>
-                ))}
-              </motion.ul>
-
-              <motion.a
-                href="#contact"
-                className="b-s-join-btn"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                {plan.cta}
-                <span className="b-s-join-arrow">➜</span>
-              </motion.a>
-            </motion.div>
+              plan={plan}
+            />
           ))}
         </motion.div>
 
-        {/* --- Personal Training Fees --- */}
+        {/* Personal Training Fees */}
         <motion.div
           className="b-s-plan-category"
           initial="hidden"
@@ -436,8 +451,12 @@ const Services = () => {
           viewport={{ once: true, amount: 0.15 }}
           variants={headerContainer}
         >
-          <motion.h3 className="b-s-category-title" variants={headerItem}>
-            Personal <span className="b-s-orange">Training</span>
+          <motion.h3
+            className="b-s-category-title"
+            variants={headerItem}
+          >
+            Personal{' '}
+            <span className="b-s-orange">Training</span>
           </motion.h3>
         </motion.div>
 
@@ -450,52 +469,61 @@ const Services = () => {
         >
           {ptPlans.map((plan, index) => (
             <motion.div
-              className={`b-s-price-card ${plan.popular ? 'b-s-card-popular' : ''}`}
+              className={`b-s-price-card ${
+                plan.popular ? 'b-s-card-popular' : ''
+              }`}
               key={index}
               variants={cardRiseUp}
               whileHover={{
                 y: -10,
-                transition: { duration: 0.3, ease: 'easeOut' },
+                transition: {
+                  duration: 0.3,
+                  ease: 'easeOut',
+                },
               }}
             >
               {/* Popular Badge */}
               {plan.popular && (
                 <motion.div
                   className="b-s-badge-popular"
-                  initial={{ opacity: 0, scale: 0.6 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{
+                    opacity: 0,
+                    scale: 0.6,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    scale: 1,
+                  }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.4, type: 'spring', stiffness: 260, damping: 18 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.4,
+                    type: 'spring',
+                    stiffness: 260,
+                    damping: 18,
+                  }}
                 >
                   Most Popular
                 </motion.div>
               )}
 
-              <h3 className="b-s-plan-title">{plan.title}</h3>
-              <p className="b-s-sessions">{plan.sessions}</p>
+              <h3 className="b-s-plan-title">
+                {plan.title}
+              </h3>
+
+              <p className="b-s-sessions">
+                {plan.sessions}
+              </p>
 
               {plan.showPrice && (
                 <div className="b-s-price-wrapper">
-                  <span className="b-s-price">{plan.price}</span>
+                  <span className="b-s-price">
+                    {plan.price}
+                  </span>
                 </div>
               )}
 
-              <motion.ul
-                className="b-s-features-list"
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.5 }}
-                variants={featureList}
-              >
-                {plan.features.map((feature, idx) => (
-                  <motion.li key={idx} className="b-s-feature-item" variants={featureItem}>
-                    <svg className="b-s-check-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
-                    </svg>
-                    {feature}
-                  </motion.li>
-                ))}
-              </motion.ul>
+              <FeatureList features={plan.features} />
 
               <motion.a
                 href="#contact"
@@ -504,7 +532,9 @@ const Services = () => {
                 whileTap={{ scale: 0.97 }}
               >
                 {plan.cta}
-                <span className="b-s-join-arrow">➜</span>
+                <span className="b-s-join-arrow">
+                  ➜
+                </span>
               </motion.a>
             </motion.div>
           ))}

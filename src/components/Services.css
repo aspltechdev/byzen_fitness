@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@600;700&display=swap');
 
 :root {
-  /* --- Black / Orange Theme Variables --- */
   --b-s-bg: #0d0d0d;
   --b-s-card-bg: rgba(22, 22, 22, 0.85);
   --b-s-card-border: #262626;
@@ -49,7 +48,12 @@
   bottom: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(13, 13, 13, 0.92) 0%, rgba(13, 13, 13, 0.88) 50%, rgba(13, 13, 13, 0.95) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(13, 13, 13, 0.92) 0%,
+    rgba(13, 13, 13, 0.88) 50%,
+    rgba(13, 13, 13, 0.95) 100%
+  );
   z-index: 1;
 }
 
@@ -95,7 +99,7 @@
 .b-s-desc {
   font-size: 1.1rem;
   color: var(--b-s-sub-text);
-  max-width: 550px;
+  max-width: 570px;
   margin: 0 auto;
   line-height: 1.6;
 }
@@ -135,7 +139,7 @@
   margin: 0 auto;
 }
 
-/* --- Pricing Card (height reduced) --- */
+/* --- Pricing Card --- */
 .b-s-price-card {
   position: relative;
   background: var(--b-s-card-bg);
@@ -143,10 +147,14 @@
   border-radius: 20px;
   border: 1.5px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+
   display: flex;
   flex-direction: column;
+
   transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+
   text-align: center;
+
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -175,14 +183,23 @@
   top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(135deg, #ff8c2b, #ff5b1a);
+
+  background: linear-gradient(
+    135deg,
+    #ff8c2b,
+    #ff5b1a
+  );
+
   color: var(--b-s-white);
+
   padding: 4px 18px;
   border-radius: 50px;
+
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 1.5px;
   text-transform: uppercase;
+
   white-space: nowrap;
 }
 
@@ -215,69 +232,138 @@
   color: var(--b-s-orange-light);
 }
 
-/* --- Features List --- */
+/* =========================================
+   FEATURES
+   ========================================= */
+
 .b-s-features-list {
   list-style: none;
   padding: 0;
   margin: 0 0 16px 0;
+
   display: flex;
   flex-direction: column;
+
   gap: 6px;
+
   text-align: left;
+
   flex: 1;
 }
 
+/*
+  align-items: flex-start is important here.
+
+  The opening-hours feature contains 3 lines:
+  Open:
+  Mon - Sat...
+  Sun...
+
+  The check icon stays beside "Open:" instead
+  of being vertically centered between all lines.
+*/
 .b-s-feature-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+
   gap: 10px;
+
   color: var(--b-s-sub-text);
+
   font-size: 0.86rem;
-  line-height: 1.3;
+  line-height: 1.45;
 }
 
+/* Check icon */
 .b-s-check-icon {
   width: 16px;
   height: 16px;
+
   flex-shrink: 0;
+
   color: var(--b-s-orange-light);
+
+  /* Align icon nicely with first text line */
+  margin-top: 2px;
+}
+
+/*
+  This preserves \n from OPENING_HOURS.
+
+  Therefore:
+  Open:\nMon - Sat...\nSun...
+
+  becomes three visible lines while remaining
+  ONE feature item and therefore ONE tick.
+*/
+.b-s-feature-text {
+  white-space: pre-line;
+  display: block;
 }
 
 /* --- CTA Button --- */
 .b-s-join-btn {
   width: 100%;
   margin-top: auto;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   gap: 8px;
+
   background: rgba(255, 255, 255, 0.05);
+
   border: 2px solid rgba(255, 255, 255, 0.12);
+
   color: var(--b-s-main-text);
+
   padding: 11px 0;
+
   border-radius: 12px;
+
   font-weight: 700;
   font-size: 0.9rem;
+
   cursor: pointer;
+
   transition: all 0.3s ease;
+
   text-decoration: none;
 }
 
 .b-s-join-btn:hover {
-  background: linear-gradient(135deg, #ff8c2b, #ff5b1a);
+  background: linear-gradient(
+    135deg,
+    #ff8c2b,
+    #ff5b1a
+  );
+
   border-color: transparent;
+
   color: var(--b-s-white);
 }
 
 /* --- Popular Card Button Override --- */
 .b-s-card-popular .b-s-join-btn {
-  background: linear-gradient(135deg, #ff8c2b, #ff5b1a);
+  background: linear-gradient(
+    135deg,
+    #ff8c2b,
+    #ff5b1a
+  );
+
   border-color: transparent;
+
   color: var(--b-s-white);
 }
 
 .b-s-card-popular .b-s-join-btn:hover {
-  background: linear-gradient(135deg, #ff9d47, #ff6b2d);
+  background: linear-gradient(
+    135deg,
+    #ff9d47,
+    #ff6b2d
+  );
+
   transform: scale(1.02);
 }
 
@@ -289,11 +375,15 @@
   transform: translateX(4px);
 }
 
-/* --- Responsive Design --- */
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+
 @media (max-width: 1200px) {
   .b-s-pricing-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .b-s-pricing-grid-pt {
     grid-template-columns: repeat(2, 1fr);
     max-width: 100%;
@@ -301,60 +391,82 @@
 }
 
 @media (max-width: 1024px) {
-  .b-s-title { font-size: 3rem; }
-  .b-s-category-title { font-size: 2.2rem; }
+  .b-s-title {
+    font-size: 3rem;
+  }
+
+  .b-s-category-title {
+    font-size: 2.2rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .b-s-title { 
-    font-size: 2.5rem; 
+  .b-s-title {
+    font-size: 2.5rem;
   }
-  .b-s-price-card { 
-    padding: 20px 18px 16px; 
+
+  .b-s-price-card {
+    padding: 20px 18px 16px;
   }
-  .b-s-desc { 
-    font-size: 1rem; 
+
+  .b-s-desc {
+    font-size: 1rem;
   }
-  .b-s-category-title { 
-    font-size: 1.8rem; 
+
+  .b-s-category-title {
+    font-size: 1.8rem;
   }
-  .b-s-plan-category { 
-    margin: 50px 0 30px; 
+
+  .b-s-plan-category {
+    margin: 50px 0 30px;
   }
+
   .b-s-pricing-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
+
   .b-s-pricing-grid-pt {
     grid-template-columns: 1fr;
     max-width: 400px;
   }
+
   .b-s-card-popular {
     transform: scale(1);
   }
+
   .b-s-card-popular:hover {
     transform: translateY(-10px) scale(1);
   }
 }
 
 @media (max-width: 550px) {
-  .b-s-pricing-grid { 
-    grid-template-columns: 1fr; 
+  .b-s-pricing-grid {
+    grid-template-columns: 1fr;
     gap: 25px;
   }
-  .b-s-price-card { 
-    height: auto; 
+
+  .b-s-price-card {
+    height: auto;
   }
-  .b-s-title { 
-    font-size: 2rem; 
+
+  .b-s-title {
+    font-size: 2rem;
   }
-  .b-s-category-title { 
-    font-size: 1.5rem; 
+
+  .b-s-category-title {
+    font-size: 1.5rem;
   }
+
   .b-s-section {
     padding: 60px 15px 80px;
   }
+
   .b-s-bg-wrapper {
     background-attachment: scroll;
+  }
+
+  .b-s-feature-item {
+    font-size: 0.86rem;
   }
 }

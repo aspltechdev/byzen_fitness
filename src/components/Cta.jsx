@@ -1,13 +1,13 @@
 import React from "react";
 import "./Cta.css";
 import { ArrowRight, Phone, MapPin, Clock } from "lucide-react";
-import ctaBg from "../assets/g3.jpg"; // swap this for whichever gym photo you want behind the CTA
+import ctaBg from "../assets/g3.jpg";
 
 const infoCards = [
   {
     icon: <Phone size={22} />,
     label: "Call Us",
-    value: "+91 98400 77793",
+    value: "+91 8667309414\n+91 9655221117",
   },
   {
     icon: <MapPin size={22} />,
@@ -17,17 +17,31 @@ const infoCards = [
   {
     icon: <Clock size={22} />,
     label: "Open Hours",
-    value: "Mon - Sun, 5AM - 10PM",
+    value: "Mon - Sat | 5:30 AM - 10:30 PM\nSun | 6 AM - 12 PM",
   },
 ];
 
 const CTA = () => {
+  const handleJoinNow = () => {
+    document.getElementById("contact")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <section className="cta-section" style={{ "--cta-bg": `url(${ctaBg})` }}>
-      <div className="cta-badge">JOIN THE MOVEMENT</div>
+    <section
+      className="cta-section"
+      style={{ "--cta-bg": `url(${ctaBg})` }}
+    >
+      <div className="cta-badge">
+        JOIN THE MOVEMENT
+      </div>
 
       <h2 className="cta-heading">
-        Ready To <span className="highlight">Forge Your Legend?</span>
+        Ready To{" "}
+        <span className="highlight">
+          Forge Your Legend?
+        </span>
       </h2>
 
       <p className="cta-subtext">
@@ -36,23 +50,27 @@ const CTA = () => {
         walk in.
       </p>
 
-     <button
-  className="cta-button"
-  onClick={() => {
-    document.getElementById('contact')?.scrollIntoView({
-      behavior: 'smooth',
-    });
-  }}
->
-  JOIN NOW <ArrowRight size={20} />
-</button>
+      <button
+        className="cta-button"
+        onClick={handleJoinNow}
+      >
+        JOIN NOW
+        <ArrowRight size={20} />
+      </button>
 
       <div className="cta-info-grid">
         {infoCards.map((item, i) => (
-          <div className="cta-info-card" key={i}>
-            <div className="cta-info-icon">{item.icon}</div>
+          <div
+            className="cta-info-card"
+            key={i}
+          >
+            <div className="cta-info-icon">
+              {item.icon}
+            </div>
+
             <div className="cta-info-text">
               <h4>{item.label}</h4>
+
               <p>{item.value}</p>
             </div>
           </div>

@@ -63,7 +63,7 @@ const riseUpVisual = {
 
 const About = () => {
   const { count: sqft, ref: sqftRef } = useCountUp(7000);
-  const { count: members, ref: membersRef } = useCountUp(2794);
+  const { count: members, ref: membersRef } = useCountUp(1000);
 
   return (
     <section id="about" className="about">

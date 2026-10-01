@@ -1,26 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@700;800&display=swap');
 
 :root {
-  --b-f-black: #050505; 
+  --b-f-black: #050505;
   --b-f-card-bg: #0f0f0f;
-  --b-f-orange: #f97316; 
+  --b-f-orange: #f97316;
   --b-f-white: #ffffff;
   --b-f-gray: #9ca3af;
-  /* NEW: Added gradient to match the Navbar */
-  --b-f-gradient: linear-gradient(120deg, #ffb35c 0%, #f97316 50%, #d43308 100%);
+
+  --b-f-gradient: linear-gradient(
+    120deg,
+    #ffb35c 0%,
+    #f97316 50%,
+    #d43308 100%
+  );
 }
 
-/* --- Main Footer Wrapper --- */
+/* ========================================
+   FOOTER
+======================================== */
+
 .b-f-footer {
   background-color: var(--b-f-black);
+
   padding: 80px 20px 30px;
+
   display: flex;
   justify-content: center;
+
   font-family: 'Inter', sans-serif;
+
   color: var(--b-f-white);
-  /* Premium thin gradient border on top to separate from the contact section */
+
   border-top: 1px solid rgba(255, 255, 255, 0.03);
-  box-shadow: inset 0 1px 0 rgba(249, 115, 22, 0.2); 
+
+  box-shadow:
+    inset 0 1px 0 rgba(249, 115, 22, 0.2);
 }
 
 .b-f-container {
@@ -29,34 +43,66 @@
   margin: 0 auto;
 }
 
-/* --- Top Section: Grid Layout --- */
+/* ========================================
+   TOP GRID
+======================================== */
+
 .b-f-top {
   display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
-  gap: 40px;
+
+  /*
+    Give contact information more room.
+    This prevents emails/numbers from
+    running into each other.
+  */
+  grid-template-columns:
+    minmax(230px, 1.6fr)
+    minmax(130px, 0.8fr)
+    minmax(260px, 1.5fr)
+    minmax(200px, 1fr);
+
+  gap: 45px;
+
+  align-items: start;
+
   padding-bottom: 50px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.04);
+
   margin-bottom: 30px;
 }
 
-/* --- Individual Columns --- */
 .b-f-col {
   display: flex;
   flex-direction: column;
+
+  align-items: flex-start;
+
+  text-align: left;
+
+  min-width: 0;
 }
 
-/* --- NEW: Navbar-style Logo Block --- */
+/* ========================================
+   LOGO
+======================================== */
+
 .b-f-logo-block {
   display: flex;
   align-items: center;
+
   gap: 14px;
+
   margin-bottom: 15px;
 }
 
 .b-f-logo-mark {
   width: 48px;
   height: 48px;
+
   flex-shrink: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,148 +111,309 @@
 .b-f-logo-image {
   width: 100%;
   height: 100%;
+
   object-fit: contain;
-  filter: drop-shadow(0 3px 8px rgba(249, 115, 22, 0.3));
+
+  filter:
+    drop-shadow(0 3px 8px rgba(249, 115, 22, 0.3));
 }
 
 .b-f-logo-text {
   display: flex;
   flex-direction: column;
+
   line-height: 1.15;
 }
 
 .b-f-logo-name {
-  font-family: "Arial Black", "Helvetica Neue", sans-serif;
+  font-family:
+    "Arial Black",
+    "Helvetica Neue",
+    sans-serif;
+
   font-weight: 900;
+
   font-size: 20px;
+
   letter-spacing: 1.5px;
+
   background: var(--b-f-gradient);
+
   -webkit-background-clip: text;
   background-clip: text;
+
   color: transparent;
 }
 
 .b-f-logo-tagline {
   font-size: 10px;
+
   font-weight: 600;
+
   letter-spacing: 2px;
+
   text-transform: uppercase;
+
   color: var(--b-f-gray);
+
   margin-top: 3px;
 }
 
-/* --- Tagline/Description below the logo --- */
+/* ========================================
+   BRAND DESCRIPTION
+======================================== */
+
 .b-f-tagline {
   font-size: 0.95rem;
+
   color: var(--b-f-gray);
+
   line-height: 1.7;
+
   max-width: 300px;
+
   margin: 0;
 }
 
-/* --- Headings --- */
+/* ========================================
+   TITLES
+======================================== */
+
 .b-f-title {
   font-family: 'Oswald', sans-serif;
+
   font-weight: 700;
+
   font-size: 1.2rem;
+
   color: var(--b-f-white);
+
   text-transform: uppercase;
-  margin: 0 0 20px 0;
+
+  margin: 0 0 25px 0;
+
   letter-spacing: 1px;
+
   position: relative;
 }
 
-/* Small orange accent line below headings */
 .b-f-title::after {
   content: '';
+
   position: absolute;
+
   bottom: -8px;
   left: 0;
+
   width: 30px;
   height: 3px;
+
   background: var(--b-f-orange);
+
   border-radius: 4px;
 }
 
-/* --- Quick Links --- */
+/* ========================================
+   QUICK LINKS
+======================================== */
+
 .b-f-links {
   list-style: none;
+
   padding: 0;
   margin: 0;
+
   display: flex;
   flex-direction: column;
+
   gap: 12px;
 }
 
+.b-f-links li {
+  margin: 0;
+}
+
 .b-f-links a {
+  display: inline-block;
+
   color: var(--b-f-gray);
+
   text-decoration: none;
+
   font-size: 0.95rem;
-  transition: all 0.3s ease;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .b-f-links a:hover {
   color: var(--b-f-orange);
+
   transform: translateX(6px);
 }
 
-/* --- Contact & Hours --- */
-.b-f-contact-list, 
-.b-f-hours-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* ========================================
+   CONTACT INFORMATION
+======================================== */
+
+.b-f-contact-list {
+  width: 100%;
+
   display: flex;
   flex-direction: column;
-  gap: 12px;
+
+  gap: 18px;
 }
 
-.b-f-contact-list li, 
-.b-f-hours-list li {
-  font-size: 0.95rem;
-  color: var(--b-f-gray);
-  line-height: 1.5;
+.b-f-contact-item {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 5px;
+
+  width: 100%;
 }
 
 .b-f-label {
+  display: block;
+
   color: var(--b-f-white);
-  font-weight: 600;
-  margin-right: 5px;
+
+  font-size: 0.95rem;
+
+  font-weight: 700;
+
+  margin: 0;
 }
 
-.b-f-contact-list a {
+.b-f-contact-values {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 4px;
+
+  width: 100%;
+
   color: var(--b-f-gray);
+
+  font-size: 0.93rem;
+
+  line-height: 1.55;
+}
+
+.b-f-contact-values a {
+  display: block;
+
+  color: var(--b-f-gray);
+
   text-decoration: none;
+
+  /*
+    Keeps phone numbers together.
+  */
+  white-space: nowrap;
+
   transition: color 0.3s ease;
 }
 
-.b-f-contact-list a:hover {
+.b-f-contact-values a:hover {
   color: var(--b-f-orange);
 }
 
-.b-f-highlight {
-  color: var(--b-f-white);
+/*
+  Email addresses may need to break on
+  very narrow screens.
+*/
+.b-f-contact-item:nth-child(2)
+.b-f-contact-values a {
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
-/* --- Social Icons --- */
+.b-f-contact-values span {
+  color: var(--b-f-gray);
+
+  line-height: 1.6;
+}
+
+/* ========================================
+   WORKING HOURS
+======================================== */
+
+.b-f-hours-list {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.b-f-hours-item {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.b-f-hours-day {
+  color: var(--b-f-white);
+
+  font-size: 0.95rem;
+
+  font-weight: 700;
+}
+
+.b-f-hours-time {
+  color: var(--b-f-gray);
+
+  font-size: 0.93rem;
+
+  line-height: 1.5;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   SOCIAL ICONS
+======================================== */
+
 .b-f-socials {
   display: flex;
+
   gap: 12px;
-  margin-top: 20px;
+
+  margin-top: 24px;
 }
 
 .b-f-social-icon {
   display: flex;
+
   align-items: center;
   justify-content: center;
+
   width: 42px;
   height: 42px;
+
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background:
+    rgba(255, 255, 255, 0.04);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
   color: var(--b-f-gray);
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+
   text-decoration: none;
+
+  transition:
+    all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .b-f-social-icon svg {
@@ -216,36 +423,53 @@
 
 .b-f-social-icon:hover {
   background: var(--b-f-orange);
+
   border-color: var(--b-f-orange);
+
   color: var(--b-f-white);
+
   transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+
+  box-shadow:
+    0 10px 20px rgba(249, 115, 22, 0.3);
 }
 
-/* --- Bottom Section: Copyright --- */
+/* ========================================
+   BOTTOM SECTION
+======================================== */
+
 .b-f-bottom {
   display: flex;
+
   justify-content: space-between;
   align-items: center;
+
   flex-wrap: wrap;
-  gap: 15px;
+
+  gap: 20px;
 }
 
 .b-f-copyright {
   font-size: 0.9rem;
+
   color: #5a5a5a;
+
   margin: 0;
 }
 
 .b-f-legal-links {
   display: flex;
+
   gap: 20px;
 }
 
 .b-f-legal-links a {
   font-size: 0.9rem;
+
   color: #5a5a5a;
+
   text-decoration: none;
+
   transition: color 0.3s ease;
 }
 
@@ -253,63 +477,119 @@
   color: var(--b-f-orange);
 }
 
-/* --- Responsive Design --- */
+/* ========================================
+   TABLET
+======================================== */
+
 @media (max-width: 1024px) {
+
   .b-f-top {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 45px 35px;
   }
+
 }
 
+/* ========================================
+   MOBILE
+======================================== */
+
 @media (max-width: 768px) {
+
+  .b-f-footer {
+    padding:
+      60px 20px 25px;
+  }
+
   .b-f-top {
     grid-template-columns: 1fr;
-    gap: 30px;
+
+    gap: 38px;
+
+    padding-bottom: 40px;
   }
+
+  .b-f-col {
+    align-items: center;
+
+    text-align: center;
+  }
+
   .b-f-logo-block {
-    justify-content: center; /* Center the logo on mobile */
+    justify-content: center;
   }
+
   .b-f-tagline {
     max-width: 100%;
+
     text-align: center;
   }
-  .b-f-bottom {
-    flex-direction: column;
-    text-align: center;
-  }
+
   .b-f-title::after {
-    left: 0;
-    right: 0;
-    margin: 0 auto;
+    left: 50%;
+
+    transform: translateX(-50%);
   }
-  .b-f-links, .b-f-contact-list, .b-f-hours-list {
+
+  .b-f-links {
     align-items: center;
   }
+
+  .b-f-contact-item {
+    align-items: center;
+  }
+
+  .b-f-contact-values {
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .b-f-hours-item {
+    align-items: center;
+
+    text-align: center;
+  }
+
   .b-f-socials {
     justify-content: center;
   }
-}
-.b-f-top {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
-  justify-content: space-between;
-  align-items: start;
-  gap: 40px;
-  padding-bottom: 50px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  margin-bottom: 30px;
+
+  .b-f-bottom {
+    flex-direction: column;
+
+    justify-content: center;
+
+    text-align: center;
+  }
 }
 
-.b-f-col {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-}
+/* ========================================
+   SMALL MOBILE
+======================================== */
 
-.b-f-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 15px;
+@media (max-width: 480px) {
+
+  .b-f-footer {
+    padding:
+      50px 16px 24px;
+  }
+
+  .b-f-contact-values {
+    font-size: 0.9rem;
+  }
+
+  .b-f-hours-time {
+    font-size: 0.9rem;
+  }
+
+  .b-f-legal-links {
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 10px 18px;
+  }
 }

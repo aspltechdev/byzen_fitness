@@ -227,7 +227,8 @@ const Contact = () => {
               </div>
               <div className="b-c-card-text">
                 <h4>Phone</h4>
-                <p>+918667309414</p>
+                <p>+91 8667309414</p>
+                <p>+91 9655221117</p>
               </div>
             </div>
 
@@ -238,6 +239,7 @@ const Contact = () => {
               <div className="b-c-card-text">
                 <h4>Email</h4>
                 <p>info@bysenfitness.com</p>
+                <p>bysen.fitness@gmail.com</p>
               </div>
             </div>
 
@@ -257,7 +259,8 @@ const Contact = () => {
               </div>
               <div className="b-c-card-text">
                 <h4>Working Hours</h4>
-                <p>Mon - Sun | 5AM - 12AM</p>
+                <p>Mon - Sat | 5:30 AM - 10:30 PM</p>
+                <p>Sun | 6 AM - 12 PM</p>
               </div>
             </div>
           </div>

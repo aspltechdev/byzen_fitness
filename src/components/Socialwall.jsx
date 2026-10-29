@@ -16,10 +16,12 @@ const youtubeVideos = [
   "hE3tBpuKCXg",
 ];
 
-const fillLoop = (arr) => {
-  if (arr.length === 0) return [];
+const fillLoop = (arr = []) => {
+  if (!Array.isArray(arr) || arr.length === 0) return [];
+
   const times = Math.ceil(4 / arr.length);
   const filled = Array.from({ length: times }, () => arr).flat();
+
   return [...filled, ...filled];
 };
 

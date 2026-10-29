@@ -1,4 +1,5 @@
-/* ============ Bysen About — Premium Cream / Black / Orange Theme ============ */
+
+/* ============ BYSEN ABOUT — Responsive Premium Theme ============ */
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap');
 
@@ -8,56 +9,81 @@
   --a-steel: #6b6259;
   --a-orange: #ff6a00;
   --a-orange-light: #ffab5c;
-  --a-gradient: linear-gradient(120deg, #ffb35c 0%, #ff6a00 50%, #d43308 100%);
-  --a-display: "Anton", "Arial Black", "Helvetica Neue", sans-serif;
-  --a-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --a-gradient: linear-gradient(
+    120deg,
+    #ffb35c 0%,
+    #ff6a00 50%,
+    #d43308 100%
+  );
+
+  --a-display: "Anton", "Arial Black", sans-serif;
+  --a-body: "Inter", sans-serif;
 
   position: relative;
+  isolation: isolate;
   width: 100%;
+  padding: clamp(60px, 9vw, 130px) clamp(16px, 4vw, 32px);
   background: var(--a-cream);
   color: var(--a-ink);
-  padding: 130px 32px;
-  box-sizing: border-box;
   font-family: var(--a-body);
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-.about * {
+.about *,
+.about *::before,
+.about *::after {
   box-sizing: border-box;
 }
 
 .about-container {
+  width: 100%;
   max-width: 1320px;
   margin: 0 auto;
+
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
+  gap: clamp(32px, 6vw, 80px);
 }
 
 /* ============ Text column ============ */
 
 .about-text {
+  width: 100%;
   max-width: 560px;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
 }
 
 .about-eyebrow {
-  font-family: var(--a-body);
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 6px;
-  color: var(--a-orange);
-  text-transform: uppercase;
   margin-bottom: 20px;
+
+  font-family: var(--a-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--a-orange);
 }
 
 .about-title {
+  max-width: 100%;
+  margin: 0 0 28px;
+
   font-family: var(--a-display);
+  font-size: clamp(38px, 5.1vw, 76px);
   font-weight: 400;
-  font-size: clamp(40px, 5.4vw, 76px);
-  line-height: 0.92;
+  line-height: 0.98;
   letter-spacing: -0.5px;
   text-transform: uppercase;
-  margin: 0 0 32px;
+  overflow-wrap: anywhere;
   color: var(--a-ink);
 }
 
@@ -66,44 +92,65 @@
 }
 
 .about-para {
-  font-family: var(--a-body);
-  font-weight: 400;
-  font-size: 17px;
-  line-height: 1.75;
-  color: var(--a-steel);
-  margin: 0 0 20px;
+  width: 100%;
   max-width: 490px;
+  margin: 0 0 18px;
+
+  font-family: var(--a-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
   letter-spacing: 0.1px;
+  color: var(--a-steel);
+  overflow-wrap: break-word;
 }
 
+/* ============ Statistics ============ */
+
 .about-stats {
+  width: 100%;
   display: flex;
-  gap: 56px;
-  margin-top: 44px;
-  padding-top: 32px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 24px 48px;
+
+  margin-top: 28px;
+  padding-top: 28px;
   border-top: 1px solid rgba(20, 17, 13, 0.14);
+}
+
+.about-stat {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .about-stat-num {
   font-family: var(--a-display);
+  font-size: clamp(32px, 3.5vw, 46px);
   font-weight: 400;
-  font-size: 46px;
+  line-height: 1.1;
   letter-spacing: -0.5px;
+
   background: var(--a-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  line-height: 1;
 }
 
 .about-stat-label {
+  margin-top: 9px;
+
   font-family: var(--a-body);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--a-steel);
+  line-height: 1.6;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-top: 10px;
+  color: var(--a-steel);
 }
 
 /* ============ Visual column ============ */
@@ -111,235 +158,348 @@
 .about-visual {
   position: relative;
   width: 100%;
-  min-height: 560px;
+  min-width: 0;
+  min-height: clamp(420px, 45vw, 560px);
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Dot grid decoration */
+/* Dot decoration */
+
 .about-dots {
   position: absolute;
-  top: -10px;
-  left: 6%;
-  width: 130px;
-  height: 130px;
-  background-image: radial-gradient(rgba(20, 17, 13, 0.28) 1.6px, transparent 1.6px);
-  background-size: 16px 16px;
+  top: 2%;
+  left: 2%;
+  width: 120px;
+  height: 120px;
+
+  background-image: radial-gradient(
+    rgba(20, 17, 13, 0.25) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 15px 15px;
   z-index: 1;
+  pointer-events: none;
 }
 
-/* Big outline wordmark behind everything */
+/* Outline text */
+
 .about-outline-text {
   position: absolute;
   top: 50%;
-  right: 4%;
+  right: 0;
+
   transform: translateY(-50%) rotate(90deg);
   transform-origin: right center;
+
   font-family: var(--a-display);
-  font-size: clamp(70px, 9vw, 130px);
+  font-size: clamp(65px, 8vw, 120px);
   letter-spacing: 4px;
+  line-height: 1;
+
   color: transparent;
   -webkit-text-stroke: 1.5px rgba(20, 17, 13, 0.1);
+
   white-space: nowrap;
   z-index: 0;
   pointer-events: none;
   user-select: none;
 }
 
-/* Half-circle backdrop */
+/* Orange backdrop */
+
 .about-blob {
   position: absolute;
   top: 50%;
   left: 50%;
+
   transform: translate(-50%, -50%);
-  width: 380px;
-  height: 380px;
+  width: min(78%, 380px);
+  aspect-ratio: 1;
+
   border-radius: 50%;
   background: var(--a-gradient);
-  box-shadow: 0 40px 80px rgba(255, 106, 0, 0.28);
+  box-shadow: 0 30px 65px rgba(255, 106, 0, 0.22);
   z-index: 1;
 }
 
-/* Floating cutout-style photo */
+/* Image */
+
 .about-cutout {
   position: relative;
   z-index: 2;
-  width: 78%;
-  max-width: 380px;
+
+  width: min(76%, 360px);
   aspect-ratio: 3 / 4;
-  border-radius: 999px 999px 40px 40px;
+
+  border-radius: 999px 999px 36px 36px;
   overflow: hidden;
-  box-shadow: 0 30px 60px rgba(20, 17, 13, 0.3);
-  filter: drop-shadow(0 20px 30px rgba(20, 17, 13, 0.2));
+
+  box-shadow: 0 25px 55px rgba(20, 17, 13, 0.22);
 }
 
 .about-cutout-img {
+  display: block;
   width: 100%;
   height: 100%;
+
   object-fit: cover;
   object-position: center 20%;
-  display: block;
+
   filter: grayscale(0.15) saturate(1.2) contrast(1.1) brightness(0.9);
 }
 
+/* Floating tag */
+
 .about-tag-card {
   position: absolute;
-  left: 2%;
+  left: 0;
   bottom: 4%;
   z-index: 3;
+
+  width: max-content;
+  max-width: 52%;
+  padding: 22px 24px;
+
   background: var(--a-ink);
   color: #fff;
-  padding: 26px 30px;
-  max-width: 230px;
-  box-shadow: 0 24px 50px rgba(20, 17, 13, 0.38);
+
+  box-shadow: 0 18px 40px rgba(20, 17, 13, 0.25);
   clip-path: polygon(0 0, 100% 0, 100% 82%, 92% 100%, 0 100%);
 }
 
 .about-tag-title {
   font-family: var(--a-display);
+  font-size: 27px;
   font-weight: 400;
-  font-size: 28px;
+  line-height: 1.1;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   color: var(--a-orange-light);
-  line-height: 1;
 }
 
 .about-tag-sub {
+  margin-top: 9px;
+
   font-family: var(--a-body);
-  font-size: 10.5px;
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-/* ============ Responsive ============ */
+/* ============ Tablet ============ */
 
 @media (max-width: 960px) {
   .about {
-    padding: 90px 24px;
+    padding: 80px 28px;
   }
 
   .about-container {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-
-  .about-visual {
-    order: -1;
-    max-width: 460px;
-    margin: 0 auto;
-  }
-
-  .about-text {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .about {
-    padding: 70px 20px;
-  }
-
-  .about-stats {
+    grid-template-columns: minmax(0, 1fr);
     gap: 36px;
   }
 
   .about-visual {
-    min-height: 420px;
+    order: -1;
+    width: 100%;
+    max-width: 500px;
+    min-height: 490px;
+    margin: 0 auto;
+  }
+
+  .about-text {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .about-title {
+    font-size: clamp(42px, 7vw, 68px);
+  }
+
+  .about-para {
+    max-width: 620px;
+  }
+
+  .about-stats {
+    gap: 28px 48px;
   }
 
   .about-blob {
-    width: 280px;
-    height: 280px;
+    width: min(70%, 350px);
+  }
+
+  .about-cutout {
+    width: min(68%, 330px);
+  }
+
+  .about-tag-card {
+    left: 5%;
+  }
+}
+
+/* ============ Mobile ============ */
+
+@media (max-width: 600px) {
+  .about {
+    padding: 56px 20px;
+  }
+
+  .about-container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .about-visual {
+    min-height: 370px;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .about-dots {
+    top: 0;
+    left: 0;
+    width: 85px;
+    height: 85px;
+    background-size: 12px 12px;
+  }
+
+  .about-outline-text {
+    right: 1%;
+    font-size: 66px;
+    -webkit-text-stroke-width: 1px;
+  }
+
+  .about-blob {
+    width: min(76%, 275px);
+  }
+
+  .about-cutout {
+    width: min(68%, 250px);
+    border-radius: 999px 999px 26px 26px;
   }
 
   .about-tag-card {
     left: 0;
-    bottom: 0;
-    padding: 18px 22px;
-    max-width: 180px;
+    bottom: 3%;
+    max-width: 48%;
+    padding: 16px 18px;
   }
 
   .about-tag-title {
-    font-size: 22px;
+    font-size: 23px;
   }
 
-  .about-stat-num {
-    font-size: 34px;
-  }
-}
-.about-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: space-between;
-  align-items: center;
-  gap: 80px;
-  max-width: 1320px;
-  margin: 0 auto;
-}
-
-.about-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  text-align: left;
-  max-width: 560px;
-}
-
-.about-para {
-  text-align: left;
-  max-width: 490px;
-}
-
-.about-stats {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 56px;
-}
-
-.about-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-}
-
-.about-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Keep everything centered when it stacks on smaller screens */
-@media (max-width: 960px) {
-  .about-container {
-    justify-items: center;
-    text-align: center;
+  .about-tag-sub {
+    font-size: 8px;
+    letter-spacing: 1px;
   }
 
   .about-text {
-    align-items: center;
-    text-align: center;
-    max-width: 100%;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .about-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3.5px;
+    margin-bottom: 15px;
+  }
+
+  .about-title {
+    font-size: clamp(36px, 9.5vw, 54px);
+    line-height: 1;
+    margin-bottom: 22px;
+    letter-spacing: -0.3px;
   }
 
   .about-para {
-    text-align: center;
     max-width: 100%;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 15px;
   }
 
   .about-stats {
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+    padding-top: 22px;
   }
 
   .about-stat {
-    align-items: center;
-    text-align: center;
+    min-width: 0;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .about-stat-num {
+    font-size: clamp(30px, 8vw, 40px);
+  }
+
+  .about-stat-label {
+    font-size: 9px;
+    letter-spacing: 1px;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* ============ Small phones ============ */
+
+@media (max-width: 380px) {
+  .about {
+    padding: 44px 16px;
+  }
+
+  .about-visual {
+    min-height: 320px;
+  }
+
+  .about-blob {
+    width: 75%;
+  }
+
+  .about-cutout {
+    width: 67%;
+  }
+
+  .about-tag-card {
+    padding: 13px 14px;
+    max-width: 50%;
+  }
+
+  .about-tag-title {
+    font-size: 20px;
+  }
+
+  .about-tag-sub {
+    font-size: 7px;
+  }
+
+  .about-title {
+    font-size: clamp(32px, 9vw, 38px);
+  }
+
+  .about-stats {
+    gap: 14px;
+  }
+
+  .about-stat-num {
+    font-size: 29px;
+  }
+}
+
+/* ============ Reduced motion accessibility ============ */
+
+@media (prefers-reduced-motion: reduce) {
+  .about *,
+  .about *::before,
+  .about *::after {
+    scroll-behavior: auto !important;
   }
 }

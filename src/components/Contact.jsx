@@ -238,7 +238,7 @@ const Contact = () => {
               </div>
               <div className="b-c-card-text">
                 <h4>Email</h4>
-                <p>info@bysenfitness.com</p>
+                <p>contact@bysenfitness.com</p>
                 <p>bysen.fitness@gmail.com</p>
               </div>
             </div>

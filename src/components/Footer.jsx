@@ -110,8 +110,8 @@ const Footer = () => {
                 </span>
 
                 <div className="b-f-contact-values">
-                  <a href="mailto:info@bysenfitness.com">
-                    info@bysenfitness.com
+                  <a href="mailto:contact@bysenfitness.in">
+                    contact@bysenfitness.in
                   </a>
 
                   <a href="mailto:bysen.fitness@gmail.com">
